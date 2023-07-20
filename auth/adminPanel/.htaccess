@@ -1,0 +1,16 @@
+RewriteEngine On 
+<Files ~ "^\w+\.(gif|jpe?g|png|doc|pdf)$">
+order deny,allow
+allow from all
+</Files>
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteRule ^manage_menu.php?module_id=1$ index.php
+  
+   
+</IfModule>
+
+php_flag allow_url_fopen off
+php_value session.cookie_httponly 1
+
+ErrorDocument 404 http://localhost/nihfw/auth/adminPanel/error.php

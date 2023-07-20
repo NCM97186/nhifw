@@ -1,0 +1,210 @@
+# Disable ETags
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+<IfModule mod_php5.c>
+        # set smtp server
+        # php_value SMTP 100.100.7.3
+</IfModule>
+
+<IfModule mod_php5.c>
+	
+	php_flag magic_quotes_gpc off
+	php_flag magic_quotes_sybase off
+	php_flag register_globals off
+	php_flag session.auto_start off
+	php_value mbstring.http_input pass
+	php_value mbstring.http_output pass
+	php_flag mbstring.encoding_translation off
+	php_value max_execution_time 200
+	php_value output_buffering 4096
+	php_flag display_errors On
+	php_value session.gc_maxlifetime 1000
+	php_value session_set_cookie_params 1000
+	php_value session.bug_compat_42 off
+	php_value session.bug_compat_warn off
+	
+	Options FollowSymLinks
+	Options -Indexes
+	php_flag display_startup_errors off
+	php_flag display_errors off
+	php_flag html_errors off
+	php_flag log_errors On
+	
+	
+	
+	
+</IfModule>
+
+<IfModule php5_module>
+  
+ 
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{THE_REQUEST} !^(POST|GET)\ /.*\ HTTP/1\.1$
+#RewriteCond %{REQUEST_METHOD} ^(TRACE|OPTIONS|DEBUG|DELETE|TRACK|HEAD)
+RewriteRule .* – [F]
+Order allow,deny
+Allow from all
+<LimitExcept POST GET>
+Deny from all
+</LimitExcept>
+
+# Block WP timthumb hack
+RewriteCond %{REQUEST_URI} (timthumb\.php|phpthumb\.php|thumb\.php|thumbs\.php) [NC]
+RewriteRule . - [S=1]
+ 
+# Block suspicious user agents and requests
+
+# Block MySQL injections, RFI, base64, etc.
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http%3A%2F%2F [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
+RewriteCond %{QUERY_STRING} \=PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC,OR]
+RewriteCond %{QUERY_STRING} (\.\./|\.\.) [OR]
+RewriteCond %{QUERY_STRING} ftp\: [NC,OR]
+RewriteCond %{QUERY_STRING} http\: [NC,OR]
+RewriteCond %{QUERY_STRING} https\: [NC,OR]
+RewriteCond %{QUERY_STRING} \=\|w\| [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)/self/(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)cPath=http://(.*)$ [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^i]*i)+frame.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_(en|de)code[^(]*\([^)]*\) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>).* [NC,OR]
+RewriteCond %{QUERY_STRING} (NULL|OUTFILE|LOAD_FILE) [OR]
+RewriteCond %{QUERY_STRING} (\./|\../|\.../)+(motd|etc|bin) [NC,OR]
+RewriteCond %{QUERY_STRING} (117.239.177.100|loopback|127\.0\.0\.1) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|>||%0A|%0D|%27|%3C|%3E|%00) [NC,OR]
+RewriteCond %{QUERY_STRING} concat[^\(]*\( [NC,OR]
+RewriteCond %{QUERY_STRING} union([^s]*s)+elect [NC,OR]
+RewriteCond %{QUERY_STRING} union([^a]*a)+ll([^s]*s)+elect [NC,OR]
+RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|drop|delete|update|cast|create|char|convert|alter|declare|order|script|set|md5|benchmark|encode) [NC,OR]
+RewriteCond %{REQUEST_URI} ^(.*)CAST(.*) [OR] 
+RewriteCond %{REQUEST_URI} ^(.*)XOR(.*) [OR] 
+RewriteCond %{REQUEST_URI} ^(.*)DECLARE(.*) [NC,OR]
+ 
+# PHP-CGI Vulnerability
+RewriteCond %{QUERY_STRING} ^(%2d|\-)[^=]+$ [NC,OR]
+RewriteEngine on
+RewriteRule ^(.*) - [E=CLIENT_IP:%{REMOTE_ADDR},L]
+#RequestHeader set x-forwarded-for %{CLIENT_IP}e
+#proc/self/environ? no way!
+RewriteCond %{QUERY_STRING} proc\/self\/environ [NC,OR]
+ 
+RewriteCond %{QUERY_STRING} (sp_executesql) [NC]
+RewriteRule ^(.*)$ - [F,L]
+ 
+</IfModule>
+
+<IfModule mod_headers.c>
+# START - Disable server signature #
+ServerSignature Off
+# END - Disable server signature #
+
+# set CSP header
+Header add X-Content-Security-Policy "default-src 'self'; script-src 'self';"
+
+# set X-XSS-Protection header
+Header set X-XSS-Protection "1; mode=block"
+
+
+#samesite strict 
+ Header always edit Set-Cookie (.*) "$1; SameSite=Strict"
+
+# set Strict Transport Security
+Header always set Strict-Transport-Security "max-age=31536000; includeSubdomains;"
+
+# Header add Cache Control
+Header add Cache-Control "private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0"
+
+#X-Frame-Options
+Header always set X-Frame-Options "SAMEORIGIN
+
+#X-Security Header to help protect against content-sniffing
+Header set X-Content-Type-Options nosniff
+
+Header always set Referrer-Policy "same-origin"
+
+#PHP Discloser
+Header unset X-Powered-By
+
+      
+#Browser cache weakness
+        Header set Cache-Control no-store
+        Header set Pragma no-cache 
+</IfModule>
+
+
+
+
+<Files phpaccess.log>
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</Files>
+
+ErrorDocument 302 http://117.239.177.100/nihfw/error.php
+ErrorDocument 400 http://117.239.177.100/nihfw/error.php
+ErrorDocument 401 http://117.239.177.100/nihfw/error.php
+ErrorDocument 402 http://117.239.177.100/nihfw/error.php
+ErrorDocument 403 http://117.239.177.100/nihfw/error.php
+ErrorDocument 404 http://117.239.177.100/nihfw/error.php
+ErrorDocument 405 http://117.239.177.100/nihfw/error.php
+ErrorDocument 406 http://117.239.177.100/nihfw/error.php
+ErrorDocument 407 http://117.239.177.100/nihfw/error.php
+ErrorDocument 408 http://117.239.177.100/nihfw/error.php
+ErrorDocument 409 http://117.239.177.100/nihfw/error.php
+ErrorDocument 410 http://117.239.177.100/nihfw/error.php
+ErrorDocument 411 http://117.239.177.100/nihfw/error.php
+ErrorDocument 412 http://117.239.177.100/nihfw/error.php
+ErrorDocument 413 http://117.239.177.100/nihfw/error.php
+ErrorDocument 414 http://117.239.177.100/nihfw/error.php
+ErrorDocument 415 http://117.239.177.100/nihfw/error.php
+ErrorDocument 501 http://117.239.177.100/nihfw/error.php
+ErrorDocument 502 http://117.239.177.100/nihfw/error.php
+ErrorDocument 503 http://117.239.177.100/nihfw/error.php
+ErrorDocument 504 http://117.239.177.100/nihfw/error.php
+ErrorDocument 505 http://117.239.177.100/nihfw/error.php
+ 
+
+<ifModule mod_headers.c>
+
+Header set X-XSS-Protection "1; mode=block"
+
+Header always append X-Frame-Options SAMEORIGIN
+
+Header set X-Content-Type-Options: "nosniff”
+
+</ifModule>
+
+ 
+
+<Files ~ "^\w+\.(gif|jpe?g|png|doc|pdf)$">
+order deny,allow
+allow from all
+Satisfy All
+</Files>
+
+ 
+
+<Files phpinfo.php>
+Order Deny,Allow
+Deny from all
+
+</Files>
+
+
+
+ 
+
+AddHandler application/x-httpd-php80 .php

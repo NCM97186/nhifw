@@ -1,0 +1,436 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/Light/OpenSans-Light.eot?v=1.1.0");
+  src: url("../fonts/Light/OpenSans-Light.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/Light/OpenSans-Light.woff2?v=1.1.0") format("woff2"), url("../fonts/Light/OpenSans-Light.woff?v=1.1.0") format("woff"), url("../fonts/Light/OpenSans-Light.ttf?v=1.1.0") format("truetype"), url("../fonts/Light/OpenSans-Light.svg?v=1.1.0#Light") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+/* END Light */
+/* BEGIN Light Italic */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/LightItalic/OpenSans-LightItalic.eot?v=1.1.0");
+  src: url("../fonts/LightItalic/OpenSans-LightItalic.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/LightItalic/OpenSans-LightItalic.woff2?v=1.1.0") format("woff2"), url("../fonts/LightItalic/OpenSans-LightItalic.woff?v=1.1.0") format("woff"), url("../fonts/LightItalic/OpenSans-LightItalic.ttf?v=1.1.0") format("truetype"), url("../fonts/LightItalic/OpenSans-LightItalic.svg?v=1.1.0#LightItalic") format("svg");
+  font-weight: 300;
+  font-style: italic; }
+/* END Light Italic */
+/* BEGIN Regular */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/Regular/OpenSans-Regular.eot?v=1.1.0");
+  src: url("../fonts/Regular/OpenSans-Regular.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/Regular/OpenSans-Regular.woff2?v=1.1.0") format("woff2"), url("../fonts/Regular/OpenSans-Regular.woff?v=1.1.0") format("woff"), url("../fonts/Regular/OpenSans-Regular.ttf?v=1.1.0") format("truetype"), url("../fonts/Regular/OpenSans-Regular.svg?v=1.1.0#Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/* END Regular */
+/* BEGIN Italic */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/Italic/OpenSans-Italic.eot?v=1.1.0");
+  src: url("../fonts/Italic/OpenSans-Italic.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/Italic/OpenSans-Italic.woff2?v=1.1.0") format("woff2"), url("../fonts/Italic/OpenSans-Italic.woff?v=1.1.0") format("woff"), url("../fonts/Italic/OpenSans-Italic.ttf?v=1.1.0") format("truetype"), url("../fonts/Italic/OpenSans-Italic.svg?v=1.1.0#Italic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+/* END Italic */
+/* BEGIN Semibold */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/Semibold/OpenSans-Semibold.eot?v=1.1.0");
+  src: url("../fonts/Semibold/OpenSans-Semibold.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/Semibold/OpenSans-Semibold.woff2?v=1.1.0") format("woff2"), url("../fonts/Semibold/OpenSans-Semibold.woff?v=1.1.0") format("woff"), url("../fonts/Semibold/OpenSans-Semibold.ttf?v=1.1.0") format("truetype"), url("../fonts/Semibold/OpenSans-Semibold.svg?v=1.1.0#Semibold") format("svg");
+  font-weight: 600;
+  font-style: normal; }
+/* END Semibold */
+/* BEGIN Semibold Italic */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/SemiboldItalic/OpenSans-SemiboldItalic.eot?v=1.1.0");
+  src: url("../fonts/SemiboldItalic/OpenSans-SemiboldItalic.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/SemiboldItalic/OpenSans-SemiboldItalic.woff2?v=1.1.0") format("woff2"), url("../fonts/SemiboldItalic/OpenSans-SemiboldItalic.woff?v=1.1.0") format("woff"), url("../fonts/SemiboldItalic/OpenSans-SemiboldItalic.ttf?v=1.1.0") format("truetype"), url("../fonts/SemiboldItalic/OpenSans-SemiboldItalic.svg?v=1.1.0#SemiboldItalic") format("svg");
+  font-weight: 600;
+  font-style: italic; }
+/* END Semibold Italic */
+/* BEGIN Bold */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/Bold/OpenSans-Bold.eot?v=1.1.0");
+  src: url("../fonts/Bold/OpenSans-Bold.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/Bold/OpenSans-Bold.woff2?v=1.1.0") format("woff2"), url("../fonts/Bold/OpenSans-Bold.woff?v=1.1.0") format("woff"), url("../fonts/Bold/OpenSans-Bold.ttf?v=1.1.0") format("truetype"), url("../fonts/Bold/OpenSans-Bold.svg?v=1.1.0#Bold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+/* END Bold */
+/* BEGIN Bold Italic */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/BoldItalic/OpenSans-BoldItalic.eot?v=1.1.0");
+  src: url("../fonts/BoldItalic/OpenSans-BoldItalic.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/BoldItalic/OpenSans-BoldItalic.woff2?v=1.1.0") format("woff2"), url("../fonts/BoldItalic/OpenSans-BoldItalic.woff?v=1.1.0") format("woff"), url("../fonts/BoldItalic/OpenSans-BoldItalic.ttf?v=1.1.0") format("truetype"), url("../fonts/BoldItalic/OpenSans-BoldItalic.svg?v=1.1.0#BoldItalic") format("svg");
+  font-weight: bold;
+  font-style: italic; }
+/* END Bold Italic */
+/* BEGIN Extrabold */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/ExtraBold/OpenSans-ExtraBold.eot?v=1.1.0");
+  src: url("../fonts/ExtraBold/OpenSans-ExtraBold.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/ExtraBold/OpenSans-ExtraBold.woff2?v=1.1.0") format("woff2"), url("../fonts/ExtraBold/OpenSans-ExtraBold.woff?v=1.1.0") format("woff"), url("../fonts/ExtraBold/OpenSans-ExtraBold.ttf?v=1.1.0") format("truetype"), url("../fonts/ExtraBold/OpenSans-ExtraBold.svg?v=1.1.0#ExtraBold") format("svg");
+  font-weight: 800;
+  font-style: normal; }
+/* END Extrabold */
+/* BEGIN Extrabold Italic */
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/ExtraBoldItalic/OpenSans-ExtraBoldItalic.eot?v=1.1.0");
+  src: url("../fonts/ExtraBoldItalic/OpenSans-ExtraBoldItalic.eot?#iefix&v=1.1.0") format("embedded-opentype"), url("../fonts/ExtraBoldItalic/OpenSans-ExtraBoldItalic.woff2?v=1.1.0") format("woff2"), url("../fonts/ExtraBoldItalic/OpenSans-ExtraBoldItalic.woff?v=1.1.0") format("woff"), url("../fonts/ExtraBoldItalic/OpenSans-ExtraBoldItalic.ttf?v=1.1.0") format("truetype"), url("../fonts/ExtraBoldItalic/OpenSans-ExtraBoldItalic.svg?v=1.1.0#ExtraBoldItalic") format("svg");
+  font-weight: 800;
+  font-style: italic; }
+/* END Extrabold Italic */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1; font-family: 'Open Sans', sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0; font-size:95%;
+}
+
+
+.ul-listing ul li {
+    background: rgba(0, 0, 0, 0) url("../images/aroow.png") no-repeat scroll 3px 12px;
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 22px;
+    padding-top: 5px; font-size:95%;
+}
+
+.ul-listing ul li ul li {
+    background: rgba(0, 0, 0, 0) url("../images/aroow.png") no-repeat scroll 3px 12px;
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 22px;
+    padding-top: 5px; font-size:90%; 
+}
+
+.ol-listing ol {
+    line-height: 22px;
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+
+.ol-listing ol li {
+    background-image: none;
+    line-height: 30px;
+    list-style-type: decimal;
+    margin-bottom: 0; font-size:90%;
+}
+
+.accebility-bg{ background-color:#f2f2f2; border-bottom: 1px solid #e4e4e4;}
+.search-box{position:absolute;right:0px;top:3px;}
+.search-box ul{ float:left;} 
+.search-box ul li{ float:left; list-style:none; margin: 0 10px; color:#FFF; font-weight:600;}
+.search-box ul li span{ margin:3px 10px; float:left;}
+.search{ padding:5px 20px 5px 5px; background:#f1f1f1; border:1px solid #d1cece; width:160px;}
+.search-buttion{ background: url(../images/search.png)no-repeat center; width: 30px; position: absolute; bottom:3px; right:8px; height: 24px; border: none; top:10px; font-size:70%; color:#333; text-indent:-9999px;}
+
+.search input { color:#333;}
+/*** Menu Style CSS Start***/
+.navigation-bg{
+background: rgba(205,63,58,1);
+background: -moz-linear-gradient(top, rgba(205,63,58,1) 0%, rgba(138,6,4,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(205,63,58,1)), color-stop(100%, rgba(138,6,4,1)));
+background: -webkit-linear-gradient(top, rgba(205,63,58,1) 0%, rgba(138,6,4,1) 100%);
+background: -o-linear-gradient(top, rgba(205,63,58,1) 0%, rgba(138,6,4,1) 100%);
+background: -ms-linear-gradient(top, rgba(205,63,58,1) 0%, rgba(138,6,4,1) 100%);
+background: linear-gradient(to bottom, rgba(205,63,58,1) 0%, rgba(138,6,4,1) 100%);
+}
+.sf-menu, .sf-menu * {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.sf-menu li {
+	position: relative;
+}
+.sf-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+}
+.sf-menu > li {
+	float: left; 
+}
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul {
+	display: block;
+}
+
+.sf-menu a {
+	display: block;
+	position: relative; font-size:80%;
+}
+.sf-menu ul ul {
+	top: 0;
+	left: 100%;
+}
+
+
+/*** DEMO SKIN ***/
+.sf-menu {
+	float: left;
+}
+.sf-menu ul {box-shadow: 2px 2px 6px rgba(0,0,0,.2); min-width: 12em; /* allow long menu items to determine submenu width */}
+.sf-menu a {text-decoration: none;}
+.sf-menu a {color: #fff;}
+.sf-menu li { background-image:url(../images/menu-border.jpg); background-position:right; background-repeat:no-repeat; white-space: nowrap; /* no need for Supersubs plugin */ padding:19px 15px;}
+.sf-menu ul li { background: #8c0806; padding:10px 15px; border-bottom:1px solid #fff; }
+.sf-menu ul ul li { background: #8c0806; }
+.sf-menu li:hover,
+.sf-menu li.sfHover {
+	background: #c93a36;
+}
+/*** arrows (for all except IE7) **/
+.sf-arrows .sf-with-ul {
+	padding-right: 2.5em;
+}
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	margin-top: -3px;
+	height: 0;
+	width: 0;
+	/* order of following 3 rules important for fallbacks to work */
+	border: 5px solid transparent;
+	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5);
+}
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
+	border-top-color: white; /* IE8 fallback colour */
+}
+/* styling for right-facing arrows */
+.sf-arrows ul .sf-with-ul:after {
+	margin-top: -5px;
+	margin-right: -3px;
+	border-color: transparent;
+	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-left-color: rgba(255,255,255,.5);
+}
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after {
+	border-left-color: white;
+}
+
+/*** Menu Style CSS End***/
+.header-img-m1{ margin-top:19px;}
+.header-img-m{ margin-top:30px;}
+
+/*What's New */
+.whats-new{padding:0px; width:100%; height:330px; border:1px solid #e8e8e8;  font-size:90%; position:relative; top:39px;}
+.heading-whats-new{ font-weight:600; margin:0px; padding:10px 10px 10px 10px; color:#fffc3b; background:#c00808  url(../images/press-release-bg.jpg); background-repeat:no-repeat; width:80%; font-size:103%; margin-top:15px; position:absolute; z-index:1; }
+.v-all{ padding:10px; float: right; }
+.n-play-pause{margin:15px 5px 0px 5px; line-height:30px;  border-bottom:1px solid #CCC;}
+.n-play-pause a{ }
+.n-play-pause a:hover{ }
+#vertical-ticker{height:250px; overflow:hidden; margin:0; padding:0;}
+#vertical-ticker li{padding:15px 10px; display:block; border-bottom:1px solid #ddd; text-align: left; font-size:93%; font-weight: normal; float:left; line-height:20px;}
+
+#vertical-ticker li span{ width:90%;padding:0px 10px 0px 0px; display:block; text-align: left; font-size:93%; font-weight: 600; float:left; line-height:20px; color:#b1b1b1;}
+/* Wahts New End */
+
+/* slide */
+.slide { padding-left: 0; padding-right: 0; margin-top:15px;}
+/* slide End */
+
+/* body Content */
+.content-part{ margin-top:30px;}
+.content-part h1{ font-size:150%; font-weight: 100; color:#f77c24;}
+.content-part p{ font-size:90%; line-height:22px; margin-top:20px; text-align:justify;}
+.content-part span{margin-top:20px;}
+.content-part span a{ font-size:90%; line-height:22px; margin-top:20px; color:#c00808; text-decoration:underline;}
+.content-part span a:hover{text-decoration: none;}
+/* body Content end */
+
+/* body bullet */
+.bullet-point{ width:100%; float:left; margin-top:50px;}
+.bullet-point ul li {  width:135px; height:108px; display:block; float:left; margin-right:2px; text-align:center;}
+
+.bullet-point ul li.dark-red{ background-color:#c00808;}
+.bullet-point ul li.green{ background-color:#019240;}
+.bullet-point ul li.brown{ background-color:#d18b57;}
+.bullet-point ul li.blue{ background-color:#005bab;}
+.bullet-point ul li.orange{ background-color:#f47920;}
+.bullet-point ul li a{ color: #fff; float: left; font-size: 95%;  line-height: 22px; padding-top: 42px; text-align: center; width: 100%;}
+
+.login-section{background-image:url(../images/login-section-line.png); background-repeat:no-repeat;}
+.login-section-text{ background: #c00808 url(../images/login-section.jpg); background-repeat:no-repeat; margin:20px 20px 0px 20px; line-height:30px; font-size:90%; padding-left:15px; color:#FFF; font-weight:600; width:183px;}
+
+.login-section-text-option ul li a{  background-color: #f47920;
+    border-radius: 6px;
+    color: #fff;
+    display: block;
+    font-size: 75%;
+    line-height: 30px;
+    margin: 19px 21px 0;
+    padding-left: 13px;
+    width: 172px;}
+	
+.toolsandcalculator{padding:0px; width:100%; height:135px; border:1px solid #e8e8e8; background-color:#f9f9f9; position:relative; top:27px;}	
+.calculattext{ font-weight:600; margin:0px 0px 0px 20px; padding:7px 10px 7px 10px; color:#fff; background: url(../images/login-section.png); background-repeat:no-repeat; width:80%; font-size:90%; margin-top:15px; position:absolute; z-index:1; }
+
+.toolsandcalculator p{ margin:25px 10px 10px 25px; line-height:18px; font-size:80%;}
+.toolsandcalculator span a{ margin:25px 10px 10px 25px; color:#FFF; padding:5px; line-height:22px; font-size:80%; background-color:#c00808;}
+.footer-logo-bg { background:#ececec; margin-top:15px;}
+.footer-logo li{ padding:30px; display: inline-block; text-align:center;  background-image:url(../images/footer-line.jpg); background-position:right; background-repeat:no-repeat;}
+
+.footer { list-style:none; padding:30px 0 15px 0; text-align:center;}
+.footer li { font-size:90%; display:inline; border-right:1px solid #ccc;}
+.footer li:last-child { border-right:none}
+.footer li a { color:#084392; text-decoration:none; padding:0 12px; font-size:90%;}
+.footer li a:hover { color:#b6b6b6; text-decoration: underline;}
+
+.footer-left{ float:left; font-size:78%; line-height:30px;}
+.footer-right{ float: right; font-size:78%; line-height:30px; text-align:right;}
+.press-right-m{ padding-right:0px;}
+.header-padding-left{ padding-left:5px;}
+.breadcrum-margin-top{ margin-top:15px;}
+.left-menu{background-color:#f9f9f9;margin:0px; border:1px solid #d5d5d5;border-radius:5px;box-shadow:0 0 2px #dadada, 0 -3px 0 #e6e6e6 inset;display:block;padding:15px 0 15px;}
+.left-menu ul{ list-style:none; margin:0; padding:0;}
+.left-menu ul li{border-bottom:1px solid #d5d5d5; padding:10px 5px;}
+.left-menu ul li a{font-size:95%;}
+.left-menu ul li:hover{ background-color:#f5f5f5;}
+.hedings-m{ background:#f1f1f1; display:block; padding:10px 5px;}
+h2{ font-size:140%; font-weight: 100; color:#f77c24; margin-bottom:15px;}
+p, span { font-size:95%; line-height:22px;}
+
+
+
+.top-menu, .top-menu * {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.top-menu li {
+	position: relative;
+}
+.top-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+}
+.top-menu > li {
+	float: left; 
+}
+.top-menu li:hover > ul,
+.top-menu li.sfHover > ul {
+	display: block;
+}
+
+.top-menu a {
+	display: block;
+	position: relative; font-size:80%;
+}
+.top-menu ul ul {
+	top: 0;
+	left: 100%;
+}
+
+
+/*** DEMO SKIN ***/
+.top-menu {
+	float: right;
+}
+.top-menu ul {box-shadow: 2px 2px 6px rgba(0,0,0,.2); min-width: 1em; /* allow long menu items to determine submenu width */}
+.top-menu a {text-decoration: none;}
+.top-menu a {color: #fff;}
+.top-menu li { border-right: 1px solid #CCC; white-space: nowrap; /* no need for Supersubs plugin */ padding:4px 15px;}
+.top-menu ul li { background: #8c0806; padding:10px 10px; border-bottom:1px solid #fff; }
+.top-menu ul ul li { background: #8c0806; }
+.top-menu li:hover,
+.top-menu li.sfHover {
+	background: #c93a36;
+}
+
+.top-menu li:last-child { border-right: none; line-height:25px;
+}
+
+/*** arrows (for all except IE7) **/
+.sf-arrows1 .sf-with-ul {
+	padding-right: 0.5em;
+}
+/* styling for both css and generated arrows */
+.sf-arrows1 .sf-with-ul:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: -1em;
+	margin-top: -3px;
+	height: 0;
+	width: 0;
+	/* order of following 3 rules important for fallbacks to work */
+	border: 5px solid transparent;
+	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5);
+}
+.sf-arrows1 > li > .sf-with-ul:focus:after,
+.sf-arrows1 > li:hover > .sf-with-ul:after,
+.sf-arrows1 > .sfHover > .sf-with-ul:after {
+	border-top-color: white; /* IE8 fallback colour */
+}
+/* styling for right-facing arrows */
+.sf-arrows1 ul .sf-with-ul:after {
+	margin-top: -5px;
+	margin-right: -3px;
+	border-color: transparent;
+	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-left-color: rgba(255,255,255,.5);
+}
+.sf-arrows1 ul li > .sf-with-ul:focus:after,
+.sf-arrows1 ul li:hover > .sf-with-ul:after,
+.sf-arrows1 ul .sfHover > .sf-with-ul:after {
+	border-left-color: white;
+}
+
+.last-font{ color:#333 !important;}
+.last-font:hover{ color:#fff !important;}
+.top-menu input { font-size:80%;}
+
+

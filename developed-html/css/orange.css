@@ -1,0 +1,129 @@
+body { color:#333;}
+a {color:#ff7619;}
+.ul-listing ul li {background: rgba(0, 0, 0, 0) url("../images/aroow.png") no-repeat scroll 3px 12px;}
+.ul-listing ul li ul li {background: rgba(0, 0, 0, 0) url("../images/aroow.png") no-repeat scroll 3px 12px;}
+.accebility-bg{ background-color:#f2f2f2; border-bottom: 1px solid #e4e4e4;}
+.search-box ul li{color:#FFF;}
+.search{background:#f1f1f1; border:1px solid #d1cece; color:#333;}
+.search-buttion{ background: url(../images/search.png)no-repeat center; color:#333;}
+.search input { color:#333;}
+/*** Menu Style CSS Start***/
+.navigation-bg{
+
+background: #ea830e; /* Old browsers */
+background: -moz-linear-gradient(top, #ea830e 0%, #d86f0d 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ea830e 0%,#d86f0d 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ea830e 0%,#d86f0d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.sf-menu a {color:#fff;}
+.sf-menu li { background-image:url(../images/menu-border-orange.jpg); background-position:right; background-repeat:no-repeat; white-space: nowrap; /* no need for Supersubs plugin */ }
+.sf-menu ul li { background: #ff7619; border-bottom:1px solid #fff; }
+.sf-menu ul ul li { background: #ff7619; }
+.sf-menu li:hover,
+.sf-menu li.sfHover {background: #f87e2b;}
+
+/* styling for both css and generated arrows */
+.sf-arrows .sf-with-ul:after {
+	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5);
+}
+.sf-arrows > li > .sf-with-ul:focus:after,
+.sf-arrows > li:hover > .sf-with-ul:after,
+.sf-arrows > .sfHover > .sf-with-ul:after {
+	border-top-color: white; /* IE8 fallback colour */
+}
+/* styling for right-facing arrows */
+.sf-arrows ul .sf-with-ul:after {
+	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-left-color: rgba(255,255,255,.5);
+}
+.sf-arrows ul li > .sf-with-ul:focus:after,
+.sf-arrows ul li:hover > .sf-with-ul:after,
+.sf-arrows ul .sfHover > .sf-with-ul:after {
+	border-left-color: white;
+}
+
+
+/*What's New */
+.whats-new{ border:1px solid #e8e8e8;}
+.heading-whats-new{color:#fffc3b; background:#c00808  url(../images/press-release-bg.jpg); background-repeat:no-repeat; }
+.n-play-pause{border-bottom:1px solid #CCC;}
+.n-play-pause a{ }
+.n-play-pause a:hover{ }
+#vertical-ticker li{border-bottom:1px solid #ddd;}
+#vertical-ticker li span{color:#b1b1b1;}
+/* body Content */
+.content-part h1{color:#cf5300;}
+
+.content-part span a{ color:#cf5300;}
+
+
+.bullet-point ul li.dark-red{ background-color:#c00808;}
+.bullet-point ul li.green{ background-color:#019240;}
+.bullet-point ul li.brown{ background-color:#d18b57;}
+.bullet-point ul li.blue{ background-color:#005bab;}
+.bullet-point ul li.orange{ background-color:#f47920;}
+.bullet-point ul li a{ color:#fff;}
+
+.login-section{background-image:url(../images/login-section-line.png); background-repeat:no-repeat;}
+.login-section-text{ background: #c00808 url(../images/login-section.jpg); background-repeat:no-repeat; color:#FFF;}
+.login-section-text-option ul li a{  background-color: #cf5300; color:#fff;}	
+.toolsandcalculator{ border:1px solid #e8e8e8; background-color:#f9f9f9;}	
+.calculattext{ color:#fff; background: url(../images/login-section.png); background-repeat:no-repeat;}
+.toolsandcalculator span a{color:#fff; background-color:#cf5300;}
+.footer-logo-bg { background:#ececec;}
+.footer-logo li{ background-image:url(../images/footer-line.jpg); background-position:right; background-repeat:no-repeat;}
+
+.footer li { border-right:1px solid #ccc;}
+
+.footer li a { color:#cf5300; }
+.footer li a:hover { color:#b6b6b6; }
+
+.left-menu{background-color:#f9f9f9;margin:0px; border:1px solid #d5d5d5; box-shadow:0 0 2px #dadada, 0 -3px 0 #e6e6e6 inset;}
+
+.left-menu ul li{border-bottom:1px solid #d5d5d5;}
+
+.left-menu ul li:hover{ background-color:#f5f5f5;}
+.hedings-m{ background:#f1f1f1;}
+h2{color:#f77c24;}
+
+.top-menu ul {box-shadow: 2px 2px 6px rgba(0,0,0,.2);  /* allow long menu items to determine submenu width */}
+
+.top-menu a {color:#fff;}
+.top-menu li { border-right: 1px solid #CCC;}
+.top-menu ul li { background: #cf5300; border-bottom:1px solid #fff; }
+.top-menu ul ul li { background: #cf5300; }
+.top-menu li:hover,
+.top-menu li.sfHover {
+	background: #ec7b2f;
+}
+
+
+/* styling for both css and generated arrows */
+.sf-arrows1 .sf-with-ul:after {
+
+	/* order of following 3 rules important for fallbacks to work */
+	border: 5px solid transparent;
+	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5);
+}
+.sf-arrows1 > li > .sf-with-ul:focus:after,
+.sf-arrows1 > li:hover > .sf-with-ul:after,
+.sf-arrows1 > .sfHover > .sf-with-ul:after {
+	border-top-color: white; /* IE8 fallback colour */
+}
+/* styling for right-facing arrows */
+.sf-arrows1 ul .sf-with-ul:after {
+	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-left-color: rgba(255,255,255,.5);
+}
+.sf-arrows1 ul li > .sf-with-ul:focus:after,
+.sf-arrows1 ul li:hover > .sf-with-ul:after,
+.sf-arrows1 ul .sfHover > .sf-with-ul:after {
+	border-left-color: white;
+}
+
+.last-font{ color:#333 !important;}
+.last-font:hover{ color:#fff !important;}
+
+

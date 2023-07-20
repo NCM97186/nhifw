@@ -1,0 +1,23 @@
+/* $Id: cleaner.css,v 1.2 2009/09/04 18:49:12 nancyw Exp $ */
+
+#cleaner-settings-form  .form-item {
+  clear: left;
+  margin: 1em 0 1em 0;
+  padding: 1em 0 1em 0;
+}
+
+#cleaner-settings-form  .description {
+  clear: both;
+}
+
+#cleaner-settings-form  .form-radios {
+  margin-top: 0; 
+}
+
+#cleaner-settings-form  .form-radios .form-item {
+  float: left;
+  width: 24%;
+  clear: none;
+  margin: 0;
+  padding: 0;
+}

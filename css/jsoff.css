@@ -1,0 +1,9 @@
+.top-menu ul, .sf-menu ul{
+	display:block !important;
+}
+.sf-menu ul li {
+    padding: 5px 15px !important;
+}
+#homeCarousel{
+	margin-top:320px;
+}

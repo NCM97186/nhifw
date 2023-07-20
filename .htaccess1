@@ -1,0 +1,104 @@
+﻿<IfModule mod_php5.c>
+        # set smtp server
+        php_value SMTP 100.100.7.3
+</IfModule>
+
+<IfModule mod_php5.c>
+	php_flag magic_quotes_gpc off
+	php_flag magic_quotes_sybase off
+	php_flag register_globals off
+	php_flag session.auto_start off
+	php_flag display_errors On
+	php_flag mbstring.encoding_translation off
+	php_flag display_startup_errors off
+	php_flag display_errors off
+	php_flag html_errors off
+	php_flag log_errors On
+	php_value mbstring.http_input pass
+	php_value mbstring.http_output pass
+	php_value max_execution_time 200
+	php_value output_buffering 4096
+	php_value session.gc_maxlifetime 1000
+	php_value session_set_cookie_params 1000
+	php_value session.bug_compat_42 off
+	php_value session.bug_compat_warn off
+	php_value session.cookie_httponly true
+	Options FollowSymLinks
+	Options -Indexes
+	
+	
+	
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} ^(TRACK|OPTIONS|HEAD) 
+RewriteRule .* - [F]
+
+<Files phperrors.log>
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</Files>
+
+<Files phpaccess.log>
+ Order allow,deny
+ Deny from all
+ Satisfy All
+</Files>
+
+
+
+<ifModule mod_headers.c>
+
+Header set X-XSS-Protection "1; mode=block"
+
+Header always append X-Frame-Options SAMEORIGIN
+
+Header set X-Content-Type-Options: "nosniff�
+
+</ifModule>
+
+ 
+
+Header append X-FRAME-OPTIONS "Deny"
+
+RequestHeader unset X-Forwarded-For
+
+<Files ~ "^\w+\.(gif|jpe?g|png|doc|pdf)$">
+order deny,allow
+allow from all
+Satisfy All
+</Files>
+
+
+
+
+
+<Files ~ "^\w+\.(gif|jpe?g|png|doc|pdf)$">
+order deny,allow
+allow from all
+Satisfy All
+</Files>
+
+ErrorDocument 400 http://117.239.177.100/nihfw/error.php
+ErrorDocument 401 http://117.239.177.100/nihfw/error.php
+ErrorDocument 402 http://117.239.177.100/nihfw/error.php
+ErrorDocument 403 http://117.239.177.100/nihfw/error.php
+ErrorDocument 404 http://117.239.177.100/nihfw/error.php
+ErrorDocument 405 http://117.239.177.100/nihfw/error.php
+ErrorDocument 406 http://117.239.177.100/nihfw/error.php
+ErrorDocument 407 http://117.239.177.100/nihfw/error.php
+ErrorDocument 408 http://117.239.177.100/nihfw/error.php
+ErrorDocument 409 http://117.239.177.100/nihfw/error.php
+ErrorDocument 410 http://117.239.177.100/nihfw/error.php
+ErrorDocument 411 http://117.239.177.100/nihfw/error.php
+ErrorDocument 412 http://117.239.177.100/nihfw/error.php
+ErrorDocument 413 http://117.239.177.100/nihfw/error.php
+ErrorDocument 414 http://117.239.177.100/nihfw/error.php
+ErrorDocument 415 http://117.239.177.100/nihfw/error.php
+ErrorDocument 501 http://117.239.177.100/nihfw/error.php
+ErrorDocument 502 http://117.239.177.100/nihfw/error.php
+ErrorDocument 503 http://117.239.177.100/nihfw/error.php
+ErrorDocument 504 http://117.239.177.100/nihfw/error.php
+ErrorDocument 505 http://117.239.177.100/nihfw/error.php
+ 

@@ -1,0 +1,250 @@
+<?php ob_start();
+session_start();
+include("../../includes/config.inc.php");
+include("../../includes/useAVclass.php");
+include("../../includes/def_constant.inc.php");
+include("../../includes/functions.inc.php");
+
+$useAVclass = new useAVclass();
+$useAVclass->connection();
+
+@extract($_GET);
+@extract($_POST);
+@extract($_SESSION);
+if($_SESSION['admin_auto_id_sess']=='')
+{		
+	$msg = "Login to Access Admin Panel";
+	$_SESSION['sess_msg'] = $msg ;
+	header("Location:index.php");
+	exit;	
+}
+
+if($_SESSION['saltCookie'] !=$_COOKIE['Temp'])
+{
+		session_unset($admin_auto_id_sess);
+		session_unset($login_name);
+		session_unset($dbrole_id);
+		$msg = "Login to Access Admin Panel";
+		$_SESSION['sess_msg'] = $msg ;
+		header("Location:error.php");
+		exit;	
+}
+
+$role_id=$_SESSION['dbrole_id']; 
+
+
+$page_id1=content_desc(base64_decode($page_id));
+ if(!is_numeric($page_id1))
+{
+        /*session_unset($admin_auto_id_sess);
+        session_unset($login_name);
+        session_unset($dbrole_id);*/
+        $msg = "Login to Access Admin Panel";
+        $_SESSION['sess_msg'] = $msg ;
+        header("Location:error.php");
+        exit();
+}
+
+$sql= "Select * from online_submission where id='$page_id1' ";
+$res=mysqli_query($conn,$sql);
+$data=mysqli_fetch_assoc($res);
+@extract($data);
+?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>View User Feedback: <?php echo $sitename;?></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/popadmin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+<!--
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "Show Password";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = "Hide Password";
+	}
+} 
+
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+</head>
+
+<body>
+<?php //include('top_header.php'); ?>
+
+<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2" style="border:1px solid #cccccc">
+
+	<tr>
+		<td colspan="3" class="heading">Online Submission Details</td>
+	</tr>
+
+	<tr>
+		<td colspan="3" >
+		
+		<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2" >
+		
+		<tr>	<td colspan="3" >&nbsp;</td>	</tr>
+
+		<tr>
+	<td  align="left" class="label2" valign="top" width="35%"><strong> Select Institution Type</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($institution_type);?>
+		</td>
+	</tr>
+
+
+	<tr>
+		<td  align="left" class="label2" valign="top" width="35%"><strong> Type of Management e</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($management_type);?>
+		</td>
+	</tr>
+
+	<tr>
+		<td  align="left" class="label2" valign="top" width="35%"><strong>Institution_name</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($institution_name);?>
+		</td>
+	</tr>
+
+   
+    <tr>
+		<td  align="left" class="label2" valign="top" width="35%"><strong>Address</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($address);?>
+		</td>
+	</tr>
+
+	<tr>
+		<td  align="left" class="label2" valign="top" width="35%"><strong>City</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($city);?>
+		</td>
+	</tr>
+
+	<tr>
+		<td  align="left" class="label2" valign="top" width="35%"><strong>District</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($district);?>
+		</td>
+	</tr>
+
+	<tr>
+		<td  align="left" class="label2" valign="top" width="35%"><strong>Pincode</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($pincode);?>
+		</td>
+	</tr>
+
+	<tr>
+		<td  align="left" class="label2" valign="top" width="35%"><strong>State</strong></td>
+		<td>:</td>
+		<td  class="label1"><?php echo stripslashes($state);?>
+		</td>
+	</tr>
+   
+	<tr>
+		<td align="left" valign="top" class="content_page" ><strong><span class="label2">E-Mail </span></strong></td>
+		<td>:</td>
+		<td align="justify" class="label1"> <?php echo stripslashes($email);?> </td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" class="content_page" ><strong><span class="label2">Phone</span></strong></td>
+		<td>:</td>
+		<td align="justify" class="label1"> <?php echo $phone;?> </td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Fax No </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($vax_no );?> </td>
+	</tr>
+
+    <tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Contact Person </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($contact_person );?> </td>
+	</tr>
+
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Designation Person  </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($designation_person  );?> </td>
+	</tr>
+
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Phone Contact </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($phone_contact);?> </td>
+	</tr>
+
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Email Contact </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($email_contact);?> </td>
+	</tr>
+
+		<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Fax Contact </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($fax_contact);?> </td>
+	</tr>
+
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Tatal Strength </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($tatal_strength);?> </td>
+	</tr>
+
+<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">No Of Printer </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($no_of_printer);?> </td>
+	</tr>
+
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Facility </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($facility);?> </td>
+	</tr>
+
+     <tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">No Of Printers </span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($no_of_printers);?> </td>
+	</tr>
+
+	<?php
+		if($review_comment!='')
+		{
+	?>
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Admin Comment</span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo stripslashes($review_comment);?> </td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" class="content_page"><strong><span class="label2">Review Date</span></strong></td><td>:</td>
+		<td  align="justify" class="label1"> <?php echo $review_date;?> </td>
+	</tr>
+	<?php }?>
+	<tr>
+		<td colspan="3" align="center">
+		<table border="0" cellpadding="2" cellspacing="2">
+		<tr><td >
+		<input type="button" class="button" value="Close" onclick="MM_callJS('window.close();')" >
+		</td></tr>
+		</table>
+		</td>
+	</tr>
+
+</table>
+</tr>
+
+<tr>
+<td colspan="3">&nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>

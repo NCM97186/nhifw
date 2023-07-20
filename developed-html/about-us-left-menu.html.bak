@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>National Institute of Health & Family Welfare</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
+
+    <!-- Custom CSS  -->
+    <link href="css/style.css" rel="stylesheet"> 
+  
+    <link href="css/print.css" rel="stylesheet" type="text/css" media="print">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css" />
+    
+    <link rel="stylesheet" href="css/meanmenu.css" />
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="alternate stylesheet" href="css/change.css" media="screen" title="change" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    
+        <!-- jQuery -->
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- Menu Access for Tab Key -->
+	<script src="js/superfish.js"></script>
+    
+    <!-- font Size Increase Decrease -->
+    <script src="js/font-size.js"></script>
+    
+<script src="js/swithcer.js"></script>
+
+
+<script>
+
+        // initialise plugins
+     if(getCookie("mysheet") == "change" ) {
+        setStylesheet("change") ;
+    }else if(getCookie("mysheet") == "style" ) {
+        setStylesheet("style") ;
+    }else if(getCookie("mysheet") == "green" ) {
+        setStylesheet("green") ;
+    } else if(getCookie("mysheet") == "orange" ) {
+        setStylesheet("orange") ;
+    }else   {
+        setStylesheet("") ;
+    }
+</script>
+
+	<script>
+
+(function($){ //create closure so we can safely use $ as alias for jQuery
+
+$(document).ready(function(){
+
+// initialise plugin
+var example = $('#example').superfish({
+//add options here if required
+});
+
+// buttons to demonstrate Superfish's public methods
+$('.destroy').on('click', function(){
+example.superfish('destroy');
+});
+
+$('.init').on('click', function(){
+example.superfish();
+});
+
+$('.open').on('click', function(){
+example.children('li:first').superfish('show');
+});
+
+$('.close').on('click', function(){
+example.children('li:first').superfish('hide');
+});
+});
+
+})(jQuery);
+</script>
+
+	<script>
+
+(function($){ //create closure so we can safely use $ as alias for jQuery
+
+$(document).ready(function(){
+
+// initialise plugin
+var example = $('#example1').superfish({
+//add options here if required
+});
+
+// buttons to demonstrate Superfish's public methods
+$('.destroy').on('click', function(){
+example.superfish('destroy');
+});
+
+$('.init').on('click', function(){
+example.superfish();
+});
+
+$('.open').on('click', function(){
+example.children('li:first').superfish('show');
+});
+
+$('.close').on('click', function(){
+example.children('li:first').superfish('hide');
+});
+});
+
+})(jQuery);
+</script>
+
+<script src="js/modern-ticker.js" type="text/javascript"> </script>
+	<script type="text/javascript">
+            $(function () {
+                $(".ticker1").modernTicker({
+                    effect: "scroll",
+                    scrollInterval: 20,
+                    transitionTime: 500,
+                    autoplay: true
+                });
+                });
+				
+				
+</script>
+
+
+
+	<script type="text/javascript" src="js/jquery.totemticker.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#vertical-ticker').totemticker({
+				row_height	:	'100px',
+				next		:	'#ticker-next',
+				previous	:	'#ticker-previous',
+				stop		:	'#stop',
+				start		:	'#start',
+				mousestop	:	true,
+			});
+		});
+	</script>
+    
+ <script src="js/jquery.meanmenu.js"></script>   
+ <script type="text/jscript">
+jQuery(document).ready(function () {
+    jQuery('#main-nav nav').meanmenu()
+});
+</script>   
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+$(function () {
+    $('#homeCarousel').carousel({
+        interval:2000,
+        pause: "false"
+    });
+    $('#playButton').click(function () {
+        $('#homeCarousel').carousel('cycle');
+    });
+    $('#pauseButton').click(function () {
+        $('#homeCarousel').carousel('pause');
+    });
+});
+});//]]>  
+</script> 
+
+
+<!-- For Left Menu -->
+<link rel="stylesheet" type="text/css" href="css/jquery.treeview.css">
+<link rel="stylesheet" type="text/css" href="css/ajaxtabs.css">
+<script type="text/javascript" src="js/jquery.treeview.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('li.dropdown:has(ul:empty)').remove();
+        jQuery('ul.menu-class li:has(ul)').addClass('collapsed');
+        jQuery("ul.menu-class").treeview({
+            collapsed: true,
+            unique: true,
+            persist: "location"
+        });
+        return false;
+    });
+	</script>
+
+    <script type="text/jscript">
+        jQuery(document).ready(function () {
+            jQuery('.left-menu .left ').menu-class()
+        });
+</script>
+
+</head>
+<body id="fontSize">
+<noscript>
+<div class="nos">
+<p>JavaScript must be enabled in order for you to use the Site in standard view. However, it seems JavaScript is either disabled or not supported by your browser. To use standard view, enable JavaScript by changing your browser options.</p></div>
+</noscript>
+	<!-- Accessbility Part Start -->
+	<div class="container-fluid accebility-bg">
+    <div class="container">
+    
+    <div>
+    	<div>
+        <ul class="top-menu" id="example1">
+        <li>
+<a href="#"><img src="images/ico-skip.png" width="24" height="24" alt="Skip Main Content" title="Skip Main Content"></a></li>
+        
+        
+        <li><a href="#"><img src="images/sc.png" width="24" height="24" alt="Screen-Reader-Access" title="Screen Reader Access"></a></li>
+        
+        <li><a href="#"><img src="images/ico-accessibility.png" width="24" height="24" alt="Accessibility-option" title="Accessibility Option"></a>
+       		<ul>
+            	<li><a href="javascript:void(0);" title="Increase font size" onClick="set_font_size('increase')">A<sup>+</sup></a></li>
+                <li><a href="javascript:void(0);" title="Reset font size" onClick="set_font_size('')">A</a></li>
+                <li><a href="javascript:void(0);" title="Decrease font size" onClick="set_font_size('decrease')" >A<sup>-</sup></a></li>
+                <li class="hight-contrast"><a href="javascript:void(0);" title="High Contrast" class="hc" onclick="chooseStyle('change', 60);">A</a></li>
+                <li><a href="javascript:void(0);" title="Normal" class="normal"  onclick="chooseStyle('style', 60);">A</a></li>
+            </ul>
+        </li>
+        <li><a href="#"><img src="images/ico-social.png" width="24" height="24" alt="Social Icons" title="Social Icons"></a>
+        <ul>
+            	<li><a href=""><img src="images/facebook-icons.jpg" width="22" height="22" alt="facebook-icons" title="Facebook"></a></li>
+                <li><a href=""><img src="images/twitter.jpg" width="22" height="22" alt="twitter-icons" title="Twitter"></a></li>
+                <li><a href=""><img src="images/you-tube.jpg" width="22" height="22" alt="Youtube-icons" title="Youtube"></a></li>
+                
+            </ul>
+        
+        </li>
+        <li><a href="#"><img src="images/ico-site-search.png" width="24" height="24" title="Icons Site Search" alt="site-search"></a>
+        
+        <ul>
+        <li class="slave">
+        <label for="q">Search</label>
+<input type="text" class="search" id="q"  name="Search" placeholder="Enter Your Keyword">
+<input type="button" class="search-buttion" title="Search" value="submit">
+        </li> 
+        </ul>
+        
+        </li>
+        <li><a href="sitemap.html"><img src="images/ico-sitemap.png" width="24" height="24" alt="sitemap" title="Sitemap"></a></li>
+        <li class="contact-show"><a href="#" class="last-font" title="हिंदी">हिंदी <span class="hidethis">Hindi Link:This will open in new window.</span></a></li>
+	</ul>
+        </div>
+        </div>
+        </div>
+</div>
+    <!-- Accessbility Part End -->
+    
+    <!-- Logo Part Start -->
+	<div class="container-fluid">
+		<div  class="container">
+        
+        	<div class="col-md-9">
+            <h1> <a href="#"><img src="images/nihfw-logo.jpg" class="img-responsive" title="nihfw-logo" alt="nihfw-logo"></a>
+            </h1>
+            </div>
+            
+            
+            
+            <div class="col-md-3 pull-right">
+           
+            <img src="images/indian-emblem.jpg" alt="Indian Emblem" title="Indian Emblem" class="img-responsive">
+            
+            </div>
+            
+    	</div>
+	</div>
+    <!-- Logo Part Start -->
+    
+<div id="main-nav" class="navigation-bg">
+		<nav>
+			<div class="container">
+				<ul class="clearfix sf-menu" id="example">
+					<li class="current"><a href="index.html" title="Home">Home</a></li>
+					<li class="current"><a href="about-us.html" title="About Us">About Us</a>
+						<ul>
+							<li><a href="#" title="NIHFW">NIHFW</a></li>
+							<li><a href="#" title="Vision and Mission">Vision and Mission</a></li>
+							<li><a href="#" title="Organisation Chart">Organisation Chart</a></li>
+							<li><a href="#" title="Previous Directors">Previous Directors</a></li>
+                    		<li><a href="#" title="Governing Body">Governing Body</a>
+                            
+                            <ul>
+							<li><a href="#" title="NIHFW">NIHFW</a></li>
+							<li><a href="#" title="Vision and Mission">Vision and Mission</a></li>
+							<li><a href="#" title="Organisation Chart">Organisation Chart</a></li>
+							<li><a href="#" title="Previous Directors">Previous Directors</a></li>
+                    		<li><a href="#" title="Governing Body">Governing Body</a>
+                            
+                            <ul>
+							<li><a href="#" title="NIHFW">NIHFW</a></li>
+							<li><a href="#" title="Vision and Mission">Vision and Mission</a></li>
+							<li><a href="#" title="Organisation Chart">Organisation Chart</a></li>
+							<li><a href="#" title="Previous Directors">Previous Directors</a></li>
+                    		<li><a href="#" title="Governing Body">Governing Body</a></li>
+						</ul>
+                            </li>
+						</ul>
+                            
+                            </li>
+						</ul>
+					</li>
+					<li><a href="#" title="Departments">Departments</a></li>
+					<li><a href="#" title="Academics">Academics</a></li>
+                    <li><a href="#" title="Administration">Administration</a></li>
+					<li><a href="#" title="Facilities">Facilities</a></li>
+					<li><a href="#" title="Projects">Projects</a></li>
+					<li><a href="gallery.html" title="Photo Gallery">Photo Gallery</a></li>
+					<li><a href="gallery.html" title="Publications">Publications</a></li>
+					<li><a href="#" title="Contact Us">Contact Us</a></li>
+					
+            	</ul>
+			</div>
+		</nav>
+	</div>
+    <!-- Menu Part End --> 
+
+<div class="container background-white">
+<div class="row">
+            <div class="col-md-12">
+            <ol class = "breadcrumb breadcrum-margin-top">
+   <li><a href = "index.html" title="Home">Home</a></li>
+   <li class = "active">About Us</li>
+   
+
+</ol>
+ <a onclick="javascript: window.print()" title="Print" href="javascript: void(0)"><p class="glyphicon glyphicon-print  print"></p></a>
+</div>
+</div>
+    		</div>
+
+    <!--Middle Part Start -->   
+	<div class="container background-white">
+    	<div class="row">
+    	
+    <div class="col-md-3 for-print">
+		
+            <div class="left-sidebar">
+            <h3>About NIHFW</h3>
+            	<ul>
+					<li><a href="#" title="What is Smart City">NIHFW</a></li>
+					<li><a href="#" title="Vision and Mission">Vision and Mission</a></li>
+					<li><a href="#" title="Organisation Chart">Organisation Chart</a></li>
+					<li><a href="#" title="Previous Directors">Previous Directors</a></li>
+                    <li><a href="#" title="Governing Body">Governing Body</a></li>
+						</ul>
+            </div>
+            
+            
+        <div class="left-menu">
+<div class="left">
+<ul class="menu-class treeview">
+<!--
+  <li class=""><a href="http://www.nihfw.org" role="link" title="Home"><span>Home</span></a></li>
+  -->
+  <li class="has-sub collapsed expandable">
+  
+  <a role="link" title="About Us" class="icgmenuFirstNode" href="http://www.nihfw.org#"><span>About NIHFW</span></a><ul class="ddsubmenustyle blackwhite">
+  <li><a role="link" title="NIHFW" href="http://www.nihfw.org">NIHFW</a></li>
+  
+  <li><a role="link" title="Vision and Mission" href="http://www.nihfw.org">Vision and Mission</a></li>
+  <li><a role="link" title="Organisation Chart" href="http://www.nihfw.org">Organisation Chart</a></li>
+  </ul></li>
+  
+  
+  
+  <li class="has-sub collapsed expandable">
+  <a role="link" title="Benign Roles" class="icgmenuFirstNode" href="http://smartcities.gov.in/#"><span>Benign Roles</span></a>
+  <ul class="ddsubmenustyle blackwhite">
+  <li class="collapsed expandable">
+  <a role="link" title="Search And Rescue" href="http://smartcities.gov.in/">Search And Rescue</a>
+  
+  <ul class="ddsubmenustyle blackwhite">
+  <li><a role="link" title="SAR Incidents" href="http://smartcities.gov.in/">SAR Incidents</a></li>
+  <li><a role="link" title="MEDVAC/CASEVAC" href="http://smartcities.gov.in/">MEDVAC/CASEVAC</a></li>
+  <li class="collapsed expandable"><a role="link" title="NMSARCA" href="http://smartcities.gov.in/">NMSARCA</a><ul class="ddsubmenustyle blackwhite"><li><a role="link" title="SAR Organisation" href="http://smartcities.gov.in/">SAR Organisation</a></li><li><a role="link" title="Board Members" href="http://smartcities.gov.in/">Board Members</a></li>
+  <li class="last"><a role="link" title="Coordinating Agencies" href="http://smartcities.gov.in/">Coordinating Agencies</a></li>
+  </ul></li>
+  <li class="last"><a role="link" title="Publications" href="http://smartcities.gov.in/">Publications</a></li></ul></li>
+  
+  <li class="collapsed expandable"><a role="link" title="Humanitarian Ops" href="http://smartcities.gov.in/">Humanitarian Ops</a><ul class="ddsubmenustyle blackwhite"><li><a role="link" title="Natural Calamity" href="http://smartcities.gov.in/">Natural Calamity</a></li><li class="last"><a role="link" title="Other Assistance" href="http://smartcities.gov.in/">Other Assistance</a></li></ul></li><li class="collapsed expandable"><a role="link" title="Benign Roles" href="http://smartcities.gov.in/"><span>International Ops</span></a><ul class="ddsubmenustyle blackwhite"><li><a role="link" title="Overseas Deployment " href="http://smartcities.gov.in/">Overseas Deployment </a></li>
+  <li><a role="link" title="International Visit " href="http://smartcities.gov.in/">International Visit </a></li>
+  <li class="last"><a role="link" title="MoU" href="http://www.indiancoastguard.gov.in/content/1732_3_MoU.aspx">MoU</a></li></ul></li><li class="last"><a role="link" title="Assist Scientific Community" href="http://www.indiancoastguard.gov.in/content/1738_3_AssistScientificCommunity.aspx">Assist Scientific Community</a></li></ul></li>
+<li class="ICGMenuLi MenuLilast last"><a role="link" title="Contact Us" class="icgmenuFirstNode" href="http://www.indiancoastguard.gov.in/content/247_3_ContactUs.aspx"><span>Contact Us</span></a></li>		
+</ul>
+		
+</div>
+</div>    
+            
+            
+
+          </div>
+                
+                
+                
+<div class="col-md-9 content-area">
+                <h2 class="heading">About NIHFW</h2>
+                <p>The National Institute of Health and Family Welfare (NIHFW), was established on 9th March, 1977 by the merger of two national level institutions, viz. the National Institute of Health Administration and Education (NIHAE) and the National Institute of Family Planning (NIFP). The NIHFW, an autonomous organization, under the Ministry of Health and Family Welfare, Government of India, acts as an ‘apex technical institute’ as well as a ‘think tank’ for the promotion of health and family welfare programmes in the country.
+</p>
+
+<p>
+The Institute addresses a wide range of issues on health and family welfare from a variety of perspectives through the departments of Communication, Community Health Administration, Education and Training, Epidemiology, Management Sciences, Medical Care and Hospital Administration, Population Genetics and Human Development, Planning and Evaluation, Reproductive Bio-Medicine, Statistics and Demography and Social Sciences.</p>
+
+
+<br>
+<br>
+</p>
+
+<table>
+<caption>Table Title</caption>
+        <thead>
+            <tr>
+                <th>Row</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>Carter</td>
+                <td>johncarter@mail.com</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Peter</td>
+                <td>Parker</td>
+                <td>peterparker@mail.com</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>John</td>
+                <td>Rambo</td>
+                <td>johnrambo@mail.com</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+ 
+
+<ul>
+  <li>Coffee
+  <ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+</ul></li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+  <li><a href="#">Coffee</a></li>
+  <li><a href="#">Tea</a></li>
+  <li><a href="#">Coca Cola</a></li>
+</ul>
+
+
+  <ol>
+  <li>Coffee
+  <ol>
+  <li>Coffee</li>
+  <li>Tea
+  <ol>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol></li>
+  <li>Milk</li>
+</ol>
+  </li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+
+                
+ </div> 
+
+    
+    </div>
+    </div>        
+
+
+
+	<!--Footer Logo -->
+	<!--Footer Logo -->
+	<div class="container-fluid footer-logo-bg">
+    
+    
+<div class="container">
+         <div class="ticker1 modern-ticker mt-round mt-scroll">
+<div class="mt-news" style="width: 35px;">
+<ul class="footer-logo">
+              <li><a href="http://www.makeinindia.com/home" target="_blank"><img src="images/make-in-india.jpg" alt="Make in India : External website that opens in a new window" title="make-in-india" class="img-responsive"></a></li>
+              <li><a href="https://www.mygov.in/" target="_blank"><img src="images/my-gov.jpg" alt="My Gov : External website that opens in a new window" title="my-gov" class="img-responsive"></a></li>
+              <li><a href="http://incredibleindia.org/" target="_blank"><img src="images/incredible-india.jpg" alt="Incredible India : External website that opens in a new window" title="Incredible-India" class="img-responsive"></a></li>
+              <li><a href="https://data.gov.in/" target="_blank"><img src="images/data-gov.jpg" alt="Data Gov : External website that opens in a new window"  title="data-gov" class="img-responsive"></a></li>
+              
+              <li><a href="https://india.gov.in/" target="_blank"><img src="images/india.gif" alt="India Gov : External website that opens in a new window"  title="India-gov" class="img-responsive"></a></li>
+			</ul>
+	  </div>
+				
+					<!--<div class="mt-controls">
+						<div class="mt-prev"></div>
+						<div class="mt-next"></div>
+					</div>-->
+                    
+                    <div class="mt-controls">
+						<a title="prev" class="mt-prev" href="#modern-ticker"></a>
+						<a title="next" class="mt-next" href="#modern-ticker"></a>
+				      </div>
+				</div>
+    </div>
+    
+	</div>
+	<!--Footer Logo end -->
+
+	<!-- Footer part -->
+	<div class="container-fluid background-dark-gray">
+    	<div class="row">
+            <div class="container">
+            
+            <div class="col-md-4">
+            <h3 class="footer-heading">Important Links</h3>
+            
+              <ul class="footer">
+                <li> <a href="#" title="Ministry of Health & Family Welfare">Ministry of Health & Family Welfare</a></li>
+                <li> <a href="#" title="Indian Council of Medical Research">Indian Council of Medical Research</a></li>
+                <li> <a href="#" title="Children's Right & Emergency Relief organization">Children's Right & Emergency Relief organization </a></li>
+                <li> <a href="#" title="World Health Organaization">World Health Organaization</a></li>
+                <li> <a href="#" title="All India Institute of Medical Science">All India Institute of Medical Science</a></li>
+              </ul>
+              
+              <div class="v-all"><a href="#" title="View All">View All</a></div>
+              
+              </div>
+              
+              
+              <div class="col-md-3">
+            <h3 class="footer-heading">Contact Us</h3>
+            
+              <ul class="footer">
+                <li> <a href="#" title="Director's Office">Director's Office</a></li>
+                <li> <a href="#" title="Office of Dean">Office of Dean</a></li>
+                <li> <a href="#" title="Vigilance Officer">Vigilance Officer</a></li>
+                <li> <a href="#" title="Public Information Officer">Public Information Officer</a></li>
+                <li> <a href="#" title="Location Map">Location Map</a></li>
+              </ul>
+              <div class="v-all"><a href="#" title="View All">View All</a></div>
+              </div>
+              
+              
+              <div class="col-md-3">
+            <h3 class="footer-heading"> Important Information</h3>
+            
+              <ul class="footer">
+                <li> <a href="#" title="RTI">RTI</a></li>
+                <li> <a href="#" title="Important Circulars">Important Circulars</a></li>
+                <li> <a href="#" title="Public Health Lectures">Public Health Lectures</a></li>
+                <li> <a href="#" title="MDG & PPD Countries">MDG & PPD Countries</a></li>
+                <li> <a href="sitemap.html" title="Sitemap">Daily Health News Bulletin</a></li>
+              </ul>
+              <div class="v-all"><a href="#" title="View All">View All</a></div>
+              </div>
+              
+              
+              <div class="col-md-2">
+            <h3 class="footer-heading">More</h3>
+            
+              <ul class="footer">
+                <li> <a href="#" title="Website Policy">Website Policy</a></li>
+                <li> <a href="#" title="Accessibility Statement">Accessibility Statement</a></li>
+                <li> <a href="#" title="Sitemap">Sitemap</a></li>
+                <li> <a href="#" title="Archive">Archive</a></li>
+                <li> <a href="#" title="Disclaimer">Disclaimer</a></li>
+              </ul>
+              
+              <div class="v-all"><a href="#" title="View All">View All</a></div>
+              </div>
+              
+              
+              
+              
+            </div>
+        </div>
+	</div>
+    
+<div class="container-fluid background-dark-black">
+    	<div class="container">
+			<div class="footer-left">  </div>
+			
+    		<div class="footer-left">Copyright © 2016. National Institute of Health & Family Welfare<br>
+Last updated on :01/07/2016&nbsp;&nbsp;Visitor Counter - 38  </div>
+    		<div class="footer-right icons-p">
+            <ul class="social-icons icon-circle icon-rotate list-unstyled list-inline"> 
+	      <li> <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>  
+	      <li> <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li> 
+	      <li> <a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>   
+	  	</ul>
+            
+            </div>
+    	</div>
+    </div>
+	<!-- Footer part -->    
+</body>
+</html>

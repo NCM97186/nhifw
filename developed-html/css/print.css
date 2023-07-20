@@ -1,0 +1,31 @@
+body {
+ background:none;
+ width:96%; margin:auto!important; color:#000;
+}
+
+ol li, ul li {color:#000!important;}
+
+.access-links, nav, #left-link, .breadcrumb, .print, #bottom-links, footer, .shadow-contaier, .emblem, #nav-banner-bottom, .access-sec, #left-nav-inner-pages, .drop-down, .print_button, #about-us-buttons h2, .footer-logo-bg, .fa-border, .footer-left, .footer-right, .left-menu, .top-menu, .header-img-m1, #main-nav, .for-print, .background-dark-gray, .background-dark-black {display:none;}
+#internal-content {float:left;}
+.shadow-mid-content, #internal-content {background:none;}
+#right-part-inner-page {width:100%;}
+
+.logo h1 {
+    font-size: 110%; text-align:center;
+}
+
+.content-area{ width:90%;}
+
+.header-img-m {
+    margin-top: 10px; width:150px; float:left !important;
+}
+
+.logo p {
+    font-size: 90%;
+}
+
+p {color:#000;}
+
+.container {
+    width:100%;
+}
