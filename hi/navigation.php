@@ -1,6 +1,6 @@
 <div class="container">
-<ul class="clearfix sf-menu" id="example">
-<li class="current"><a href="<?php echo $HomeURL;?>/hi" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
+   <ul class="clearfix sf-menu" id="example">
+      <li class="current"><a href="<?php echo $HomeURL;?>/hi" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
       <?php 
          if($mydb->checkTable_threeRow("menu_publish","m_flag_id",0,"menu_positions",1,"approve_status",3)>0){
   

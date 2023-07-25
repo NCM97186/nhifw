@@ -583,7 +583,10 @@ $row=mysqli_num_rows($sql);
                 $new = array("$txtlanguage","$cid","$sortcontentdesc","$title","$txtcontentdesc","$url","$exturl","$txtuplodepdf","$startdate","$expairydate","$txtstatus","$content_type","$user_id","$create_date","$update_date","0");
 	
                 $useAVclass->UpdateQuery($tableName_send,$whereclause,$old,$new);
-		
+	    // echo"<pre>";
+		// print_r($new);
+		// print_r($old);
+        // echo"</pre>";die();	
 $user_id=$_SESSION['admin_auto_id_sess'];
 $page_id=$cid;
 $action="Update";

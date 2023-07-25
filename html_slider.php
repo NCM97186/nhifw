@@ -175,7 +175,7 @@
     <div class="container-fluid"> 
     <div class="row">
 				<!-- Carousel -->
-  				<div id="homeCarousel" class="carousel slide" data-ride="carousel">
+  				<div id="homeCarousel" class="col-lg-12 carousel slide" data-ride="carousel">
     			<ol class="carousel-indicators">
       				<li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
       				<li data-target="#homeCarousel" data-slide-to="1" ></li>
@@ -204,7 +204,7 @@
     	<!--Carousel controls -->
     	<a class="carousel-control left" title="left" href="#homeCarousel" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="carousel-control right" title="Right" href="#homeCarousel" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
     <!-- Controls -->
-    <div id="carouselButtons">
+    <!-- <div id="carouselButtons">
       <button id="playButton" type="button" class="btn btn-default btn-xs" title="Play">
         <span class="glyphicon glyphicon-play"></span>
       </button>
@@ -212,7 +212,7 @@
       <button id="pauseButton" type="button" class="btn btn-default btn-xs" title="Pause">
         <span class="glyphicon glyphicon-pause"></span>
       </button>
-    </div>
+    </div> -->
   </div>
               
 		</div>

@@ -11,7 +11,7 @@ ini_set("log_errors" , "0");
 ini_set("error_log" , "phperrors.log");
 ini_set("display_errors" , "1");
 
-//header('Set-Cookie: cross-site-cookie=name;  path : /; domain: http://localhost/nihfw/auth/adminPanel/index.php; SameSite=Lax;  secure');
+//header('Set-Cookie: cross-site-cookie=name;  path : /; domain: http://117.239.177.100/nihfw/auth/adminPanel/index.php; SameSite=Lax;  secure');
 // session_set_cookie_params(['SameSite' => 'None', 'Secure' => true]);
 // header('Set-Cookie: cross-site-cookie=name; SameSite=none; secure');
 
@@ -53,7 +53,7 @@ require_once "connection.php";
 
 
 
- $HomeURL = "http://localhost/nihfw";
+ $HomeURL = "http://117.239.177.100/nihfw";
 
 
 // $HomeURL=	"http://10.48.21.19";
@@ -68,23 +68,23 @@ $postion1=array("2" => "Left Menu");
 $language=array("1"=>"English","2"=>"Hindi");
 $status=array("2"=>"Inactive","1"=>"Active");
 $status1=array("0"=>"Inactive","1"=>"Active");
-$vacancytype= array("1"=>"Vacancy","2"=>"Notice","3"=>"Results");
+$vacancytype= array("1"=>"रिक्ति","2"=>"सूचना","3"=>"परिणाम");
 $menutype= array("1"=>" Content ","2"=>"PDF file Upload","3"=>"Web Site Url","4"=>"Not show in menu");
 $pageURL = $_SERVER["REQUEST_URI"];
 $homepage_type= array("2"=>"Hon'ble Minister");
 $media_type= array("1"=>"Photo Gallery","2"=>"Video Gallery");
-$important_link_cat_hindi=array("10"=>"What's News" ,"11"=>"Circular","12"=>"Events");
-$latest_category	= array("1"=>"Meeting & Events","2"=>"Workshop & Training");
-$info_category	= array("1"=>"Important Circulars","2"=>"Daily Health News Bulletin");
-$emp_type= array("1"=>"Internal User","2"=>"Public User");
-$cat_type= array("2"=>"Circular","3"=>"Events","5"=>"News");
+$important_link_cat_hindi=array("10"=>"नया क्या है" ,"11"=>"परिपत्र","12"=>"घटनाएँ");
+$latest_category	= array("1"=>"बैठक  & घटनाएँ","2"=>"कार्यशाला एवं प्रशिक्षण");
+$info_category	= array("1"=>"महत्वपूर्ण परिपत्र","2"=>"दैनिक स्वास्थ्य समाचार बुलेटिन");
+$emp_type= array("1"=>"आंतरिक उपयोगकर्ता","2"=>"सार्वजनिक उपयोगकर्ता");
+$cat_type= array("2"=>"परिपत्र","3"=>"घटनाएँ","5"=>"समाचार");
 
-$archive_cat= array("1"=>"What's new","2"=>"Meetings/Events","3"=>"Important Circulars","4"=>"Daily Health News","5"=>"Tender","6"=>"Vacancy","7"=>"Employee Corner" , "8"=>"Training" , "9"=>"Publication");
+$archive_cat= array("1"=>"नया क्या है","2"=>"बैठक /घटनाएँ","3"=>"महत्वपूर्ण परिपत्र","4"=>"दैनिक स्वास्थ्य समाचार","5"=>"नाज़ुक","6"=>"रिक्ति","7"=>"कर्मचारी कॉर्नर" , "8"=>"प्रशिक्षण" , "9"=>"प्रकाशन");
 
 
-$Institution_type=array("1"=>"Medical College","2"=>"Nursing College/School","3"=>"Sihfw","4"=>"Hfwtc","5"=>"Anmtc","6"=>"Other Training","7"=>"Ngo", "8"=>"Others" );
+$Institution_type=array("1"=>"मेडिकल कॉलेज","2"=>"नर्सिंग कॉलेज/स्कूल","3"=>"एस आईएचएफडब्ल्यू","4"=>"एचएफडब्ल्यूटीसी","5"=>"एएनएमटीसी","6"=>"अन्य प्रशिक्षण","7"=>"गैर सरकारी संगठन", "8"=>"अन्य" );
 
-$Management=array("1"=>"Goverment","2"=>"Private","3"=>"Trust","4"=>"Society","5"=>"Others" );
+$Management=array("1"=>"सरकार","2"=>"निजी","3"=>"विश्वास","4"=>"समाज","5"=>"अन्य" );
 
 
 //print_r($_SESSION);

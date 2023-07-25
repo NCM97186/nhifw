@@ -175,7 +175,7 @@
     <div class="container-fluid"> 
     <div class="row">
 				<!-- Carousel -->
-  				<div id="homeCarousel" class="carousel slide" data-ride="carousel">
+  				<div id="homeCarousel" class="col-lg-12 carousel slide" data-ride="carousel">
     			<ol class="carousel-indicators">
       				<li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
       				<li data-target="#homeCarousel" data-slide-to="1" ></li>

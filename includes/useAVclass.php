@@ -72,23 +72,15 @@ function UpdateQuery($tablename, $whereclause, $old, $new) {
     }
     
 $sql= "UPDATE ".$tablename. " SET ".$changedvalues." WHERE ".$whereclause; 
-echo $sql;
+//echo $sql; die();
 
-
-/*echo $sql;
-exit;*/
-/*if($tablename == 'header_logo')
-{
-	function
-	$myid = mysql_insert_id();
-}*/
 
 	if($changedvalues!= "")
 	{
 		mysqli_query($conn,$sql) or die('Error, Update query failed');
 
     }
- 
+
 }
 
 function deleteQuery($tableName,$whereclause){

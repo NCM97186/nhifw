@@ -302,14 +302,14 @@ include('../counter.php');
             </div>
         </div>
 
-            <?php include("left_menu.php");?>
+            <?php //include("left_menu.php");?>
     </div>
     <?php
     $date=date('Y-m-d');
     if($mydb->checkTableRow("ndc_training_courses_publish")>0)
     {
     
-                     $whereClause="approve_status='3' && language_id='1' && date(end_date ) >= '$date'  order by start_date desc" ;
+                      $whereClause="approve_status='3' && language_id='1' && date(end_date ) >= '$date'  order by start_date desc" ;
                         //$whereClause="approve_status='3' && language_id='1'   order by start_date desc" ;
                      $newsrows=$mydb->gettable_Rows_whereCluse("ndc_training_courses_publish",$whereClause); 
                      if(is_array($newsrows))
@@ -340,6 +340,9 @@ include('../counter.php');
           if($no_of_rows > 0){
          
          foreach($newsrows as $key=>$value){ 
+		 // echo"<pre>";
+		 // print_r($value);
+		  // echo"</pre>";
               $docspath = $HomeURL.'/upload/ndc/'.$value['docs_file'];
                $file='upload/ndc/'.$value['docs_file'];
             ?>
@@ -353,7 +356,7 @@ include('../counter.php');
                 else if($value['ext_url']!='') { ?>
                <a href="<?php echo $value['ext_url']; ?>" title="<?php echo $value['m_name'];?>" target="_blank"><?php echo $value['m_name'];?>  &nbsp;&nbsp;<img src="<?php echo $HomeURL; ?>/images/extlink.png" height="16" alt="External Link" /> </a>
                <?php } else { ?>
-               <a href="<?php echo $HomeURL;?>/content/news/<?php echo $value['page_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a>
+               <a href="<?php echo $HomeURL; ?>/content/news/<?php echo $value['page_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a>
                <?php } ?></td>
                 <td>
                     <?php echo date('d-m-Y', strtotime($value['start_date']));?></span></td>

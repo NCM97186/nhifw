@@ -255,11 +255,11 @@ window.onload = function(){
 		if($startdate!='' && $expirydate !='')
 	  {
 	
-	$sta=split('-',$startdate);
-$startdate=$sta['2']."-".$sta['1']."-".$sta['0'];
-$exp=split('-',$expirydate);
-$expirydate=$exp['2']."-".$exp['1']."-".$exp['0'];
-			$querywhere .=" and date(end_date) between '$startdate' and '$expirydate'";
+
+$startdate=date("Y-m-d", strtotime($startdate));
+
+$expirydate=date("Y-m-d", strtotime($expirydate));
+			$querywhere .=" and end_date between '$startdate' and '$expirydate'";
 	  }
 
 	if($btneng!='')
@@ -275,7 +275,7 @@ $expirydate=$exp['2']."-".$exp['1']."-".$exp['0'];
 	  if($errmsg=='')	
 	  {
 	  $date=date('Y-m-d');
- $query ="select * from tender where 1 $querywhere  && date(end_date ) >= '$date' ORDER BY page_postion ASC "; 
+  $query ="select * from tender where 1 $querywhere  and  end_date  >= '$date' ORDER BY page_postion ASC "; 
 	  }
 	 else
 	{
@@ -305,7 +305,7 @@ $wherecluse=" and language_id=$language and approve_status='$txtstatus'";
 }
 $date=date('Y-m-d');
 //$query ="select * from tender where $wherecluse && date(end_date ) >= '$date' ORDER BY page_postion ASC ";
-$query ="select * from tender where 1 ORDER BY page_postion ASC ";
+ $query ="select * from tender where 1 ORDER BY page_postion ASC ";
 
 }
 ?>      

@@ -16,7 +16,7 @@ include('../counter.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>National Institute of Health & Family Welfare</title>
+    <title>राष्ट्रीय स्वास्थ्य एवं परिवार कल्याण संस्थान</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $HomeURL;?>/css/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS  -->
@@ -211,8 +211,8 @@ include('../counter.php');
 <div class="row">
             <div class="col-md-12">
             <ol class = "breadcrumb breadcrum-margin-top">
-   <li><a href = "<?php echo $HomeURL;?>" title="Home">Home</a></li>
-   <li class = "active">What's New</li>
+   <li><a href = "<?php echo $HomeURL;?>/hi/" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
+   <li class = "active">नया क्या है</li>
    
 
 </ol>
@@ -236,8 +236,8 @@ include('../counter.php');
   <?php
   $date=date('Y-m-d');
   if($mydb->checkTableRow("whatsnew_publish")>0){
-  $whereClause="approve_status='3' && language_id='1' && date(end_date ) >= '$date'  order by start_date desc" ;
-  $whereClause="approve_status='3' && language_id='1'   order by start_date desc" ;
+  $whereClause="approve_status='3' && language_id='2' && date(end_date ) >= '$date'  order by start_date desc" ;
+  $whereClause="approve_status='3' && language_id='2'   order by start_date desc" ;
 
    $newsrows=$mydb->gettable_Rows_whereCluse("whatsnew_publish",$whereClause); 
    if(is_array($newsrows)){
@@ -249,16 +249,17 @@ include('../counter.php');
  ?>        
  
 <div class="col-md-9 content-area">
-                <h2 class="heading">What's New</h2>
-                
+                <h2 class="heading">नया क्या है</h2>
+             	<p style="text-align:right; font-size:14px; color:black; font-weight:bold;">
+    <a href="archive.php?cat=1" > पुरालेख</a></p>      
  <table width="100%"  class="table table-bordered">
-<caption> What's New</caption>
+<caption> नया क्या है</caption>
 		<tbody>
 			<tr>
 				<th>
-					Sr.</th>
+					क्र.सं..</th>
 				<th>
-					Title</th>
+					पृष्ठ  शीर्षक</th>
 				
 			</tr>
 			 <?php $i=1;
@@ -278,12 +279,12 @@ include('../counter.php');
 				else if($value['ext_url']!='') { ?>
 			   <a href="<?php echo $value['ext_url']; ?>" title="<?php echo $value['m_name'];?>" target="_blank"><?php echo $value['m_name'];?>  &nbsp;&nbsp;<img src="<?php echo $HomeURL; ?>/images/extlink.png" height="16" alt="External Link" /> </a>
 			   <?php } else { ?>
-			   <a href="<?php echo $HomeURL;?>/content/news/<?php echo $value['page_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a>
+			   <a href="<?php echo $HomeURL;?>/hi/content/news/<?php echo $value['page_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a>
 			   <?php } ?></td>
 				
 			</tr>
 			<?php $i++; } } else { ?>
-			<tr><td>No record found</td></tr>
+			<tr><td>कोई रिकॉर्ड नहीं मिला</td></tr>
 			<?php } ?>
 		</tbody>
 	</table>

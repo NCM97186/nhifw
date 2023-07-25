@@ -795,7 +795,7 @@ $new=array("$txtlanguage","$txtename","$cat_id","$sortcontentdesc","$m_title1","
 	$useAVclass->UpdateQuery($tableName_send,$whereclause,$old,$new);
 
 
-if($txtstatus=='3')
+			if($txtstatus=='3' || $txtstatus=='2' || $txtstatus=='1')
 {
 	$tableName_send="importent_information_publish";
 	$whereclause="where m_publish_id='$cid'";

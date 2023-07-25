@@ -17,7 +17,7 @@ include('../counter.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>National Institute of Health & Family Welfare</title>
+    <title>राष्ट्रीय स्वास्थ्य एवं परिवार कल्याण संस्थान</title>
 
     <link href="<?php echo $HomeURL;?>/css/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS  -->
@@ -216,9 +216,9 @@ include('../counter.php');
 <div class="row">
           <div class="col-md-12">
             <ol class = "breadcrumb breadcrum-margin-top">
-   <li><a href = "<?php echo $HomeURL;?>" title="Home">Home</a></li>
-   <li class = ""><a href="view-all.php?menu=More">More</a> </li>
-   <li class = "active">Site Map</li>
+ <li  ><a href="<?php echo $HomeURL;?>/hi" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
+   <li class = ""><a href="view-all.php?menu=More">अधिक</a> </li>
+   <li class = "active">साईट-मेप</li>
    
 
 </ol>
@@ -242,21 +242,21 @@ include('../counter.php');
 		</div>
 		</div>
 
-		<?php include("left_menu.php");?>
+		<?php //include("left_menu.php");?>
 		 
 		</div>
           
           
  
 <div class="col-md-9 content-area">
-                <h2 class="heading">Site Map</h2>
+                <h2 class="heading">साईट-मेप</h2>
                 
  <ul >
-<li><a href="<?php echo $HomeURL;?>" title="Home">Home</a></li>
+<li><a href="<?php echo $HomeURL;?>/hi" title="Home">मुख्य पृष्ठ</a></li>
 	<?php 
 		if($mydb->checkTable_threeRow("menu_publish","m_flag_id",0,"menu_positions",1,"approve_status",3)>0){
 		
-			$whereClause="m_flag_id='0' && menu_positions='1' && approve_status='3' && language_id='1' and m_publish_id!=67 order by page_postion asc" ;
+			$whereClause="m_flag_id='0' && menu_positions='1' && approve_status='3' && language_id='2' and m_publish_id!=67 order by page_postion asc" ;
 			$leftrows=$mydb->gettable_Rows_whereCluse("menu_publish",$whereClause); 
 			//$leftrows=$mydb->gettable_RowsthreeColumn_where("menu_publish","m_flag_id",0,"menu_positions",1,"approve_status",3);
 			$num=$mydb->countTableRow("menu_publish","m_flag_id",$value['m_publish_id'],"menu_positions",1,"approve_status",3);
@@ -264,15 +264,15 @@ include('../counter.php');
 ?>
 	<?php foreach($leftrows as $key=>$value){
 			 if($mydb->checkTable_threeRow("menu_publish","m_publish_id",$value['m_publish_id'],"menu_positions",1,"approve_status",3)>0){
-			$leftrows1=$mydb->gettable_RowsfourColumn_where("menu_publish","m_flag_id",$value['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",1);
-			$num1=$mydb->countTableRow("menu_publish","m_flag_id",$value['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",1);
+			$leftrows1=$mydb->gettable_RowsfourColumn_where("menu_publish","m_flag_id",$value['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",2);
+			$num1=$mydb->countTableRow("menu_publish","m_flag_id",$value['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",2);
 				} 
 			if($value['m_url']==$url)
 			{
 			$class="active";
 			}
 				
-			$sql1 = mysqli_query($conn,"select * from menu_publish where m_flag_id='".$value['m_publish_id']."' and menu_positions='1' and language_id='1' and approve_status='3' ORDER BY page_postion ASC");
+			$sql1 = mysqli_query($conn,"select * from menu_publish where m_flag_id='".$value['m_publish_id']."' and menu_positions='1' and language_id='2' and approve_status='3' ORDER BY page_postion ASC");
 			//echo $value['m_name']."".
 			$row2 = mysqli_num_rows($sql1);
 				 if($row2 > 0){ ?>
@@ -283,10 +283,10 @@ include('../counter.php');
 			<ul>
 				<?php foreach($leftrows1 as $key=>$value1){	
 				if($mydb->checkTable_threeRow("menu_publish","m_publish_id",$value1['m_publish_id'],"menu_positions",1,"approve_status",3)>0){
-				$leftrows3=$mydb->gettable_RowsfourColumn_where("menu_publish","m_flag_id",$value1['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",1);
-				$num2=$mydb->countTableRow("menu_publish","m_flag_id",$value1['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",1);
+				$leftrows3=$mydb->gettable_RowsfourColumn_where("menu_publish","m_flag_id",$value1['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",2);
+				$num2=$mydb->countTableRow("menu_publish","m_flag_id",$value1['m_publish_id'],"menu_positions",1,"approve_status",3,"language_id",2);
 				}
-			  $sql2 = mysqli_query($conn,"select * from menu_publish where m_flag_id='".$value1['m_publish_id']."' and menu_positions='1' and language_id='1' and approve_status='3' ORDER BY page_postion ASC");
+			  $sql2 = mysqli_query($conn,"select * from menu_publish where m_flag_id='".$value1['m_publish_id']."' and menu_positions='1' and language_id='2' and approve_status='3' ORDER BY page_postion ASC");
 			  $row3 = mysqli_num_rows($sql2);
 			 if($row3 > 0){
 				?>
@@ -296,7 +296,7 @@ include('../counter.php');
 			<ul>
 				<?php foreach($leftrows3 as $key=>$value3){
 			if($value3['doc_uplode']=='') {?>
-			  <li><a href="<?php echo $HomeURL;?>/cms/<?php echo $value3['m_url']; ?>" title="<?php echo $value3['m_name'];?>"><?php echo $value3['m_name'];?></a></li>
+			  <li><a href="<?php echo $HomeURL;?>/hi/cms/<?php echo $value3['m_url']; ?>" title="<?php echo $value3['m_name'];?>"><?php echo $value3['m_name'];?></a></li>
 			<?php } else { ?>
 			 <li><a href="<?php echo $HomeURL;?>/upload/<?php echo $value3['doc_uplode']; ?>" title="<?php echo $value3['m_name'];?>" target="_blank"><?php echo $value3['m_name'];?></a></li>
 			<?php }
@@ -307,7 +307,7 @@ include('../counter.php');
 			 </li> <?php }
 				elseif($row3 == 0 ){
 		?>
-		<li><a href="<?php echo $HomeURL;?>/cms/<?php echo $value1['m_url']; ?>" title="<?php echo $value1['m_name'];?>"><?php echo $value1['m_name'];?></a></li>
+		<li><a href="<?php echo $HomeURL;?>/hi/cms/<?php echo $value1['m_url']; ?>" title="<?php echo $value1['m_name'];?>"><?php echo $value1['m_name'];?></a></li>
 		<?php	 } 
 				}  ?>
 			</ul>
@@ -317,7 +317,7 @@ include('../counter.php');
 	<?php }
 	elseif($row2 == 0 ){ ?>
 		
-		<li><a href="<?php echo $HomeURL;?>/cms/<?php echo $value['m_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a></li>
+		<li><a href="<?php echo $HomeURL;?>/hi/cms/<?php echo $value['m_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a></li>
 <?php	}  }?>
 			</ul>
 			
@@ -327,16 +327,16 @@ include('../counter.php');
 			
 			<!--Home Page Message-->
 			<ul>
-				<li><a href="<?php echo $HomeURL;?>/director_message.php">From the Director's Desk</a></li>
+				<li><a href="<?php echo $HomeURL;?>/hi/director_message.php">निदेशक की क़लम से</a></li>
 			 
-				<li><a href="<?php echo $HomeURL;?>/meeting.php" title="Meetings & Events / Workshop & Training">Meetings & Events / Workshop & Training</a>
+				<li><a href="<?php echo $HomeURL;?>/hi/meeting.php" title="बैठकें एवं कार्यक्रम/कार्यशाला एवं प्रशिक्षण">बैठकें एवं कार्यक्रम/कार्यशाला एवं प्रशिक्षण</a>
 					<ul>
 						<li>
 							<?php
 							$date=date('Y-m-d');
 							if($mydb->checkTableRow("latest_information_publish")>0){
 
-								$whereClause="approve_status='3' && language_id='1'   order by start_date desc" ;
+								$whereClause="approve_status='3' && language_id='2'   order by start_date desc" ;
 
 								$newsrows=$mydb->gettable_Rows_whereCluse("latest_information_publish",$whereClause); 
 								if(is_array($newsrows)){
@@ -361,7 +361,7 @@ include('../counter.php');
 									else if($value['ext_url']!='') { ?>
 								   <a href="<?php echo $value['ext_url']; ?>" title="<?php echo $value['m_name'];?>" target="_blank"><?php echo $value['m_name'];?> </a>
 								   <?php } else { ?>
-								   <a href="<?php echo $HomeURL;?>/meeting/<?php echo $value['page_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a>
+								   <a href="<?php echo $HomeURL;?>/hi/meeting/<?php echo $value['page_url']; ?>" title="<?php echo $value['m_name'];?>"><?php echo $value['m_name'];?></a>
 								   <?php } ?>
 									</li>
 								<?php 
@@ -377,18 +377,18 @@ include('../counter.php');
 			<!--Home Page What's New-->
 			<ul>
 				<li>
-					<a href="<?php echo $HomeURL;?>/viewall_whatsnew.php" title="What’s New">What’s New</a>
+					<a href="<?php echo $HomeURL;?>/hi/viewall_whatsnew.php" title="नया क्या है">नया क्या है</a>
 				</li>
 			</ul>
 			
 			
 			<!--Home Page Projects-->
 			<ul>
-				<li><a href="#" title="Projects">Projects</a>
+				<li><a href="#" title="परियोजनाओं">परियोजनाओं</a>
 					<ul>
 						<?php 
 							if($mydb->checkTable_TwoRow("menu_publish","m_flag_id",103,"approve_status",3)>0){
-								$whereClause="m_flag_id='103' && approve_status='3' && language_id='1' order by page_postion asc limit 0,6" ;
+								$whereClause="m_flag_id='103' && approve_status='3' && language_id='2' order by page_postion asc limit 0,6" ;
 								$leftrows=$mydb->gettable_Rows_whereCluse("menu_publish",$whereClause);
 							}
 						?>
@@ -403,10 +403,10 @@ include('../counter.php');
 			
 			<!--Home Page Links Just Before Footer-->
 			<ul>
-				<li><a href="#">Other Links</a>
+				<li><a href="#">अन्य लिंक</a>
 					<ul>
 						<?php 
-						$whereClause="m_flag_id='0' && menu_positions='2' && approve_status='3' && language_id='1'  order by page_postion asc" ;
+						$whereClause="m_flag_id='0' && menu_positions='2' && approve_status='3' && language_id='2'  order by page_postion asc" ;
 						$bottomrows=$mydb->gettable_Rows_whereCluse("menu_publish",$whereClause); 
 						foreach($bottomrows as $key=>$value){ 
 							$title=$value['m_name'];
@@ -442,7 +442,7 @@ include('../counter.php');
 			<?php 
 			if($mydb->checkTable_threeRow("menu_publish","m_flag_id",0,"menu_positions",3,"approve_status",3)>0){
 			
-				$whereClause="m_flag_id='0' && menu_positions='3' && approve_status='3' && language_id='1' and m_publish_id!='19' order by page_postion asc limit 0,4" ;
+				$whereClause="m_flag_id='0' && menu_positions='3' && approve_status='3' && language_id='2' and m_publish_id!='19' order by page_postion asc limit 0,4" ;
 				$leftrows=$mydb->gettable_Rows_whereCluse("menu_publish",$whereClause); 
 				
 				$num=$mydb->countTableRow("menu_publish","m_flag_id",$value['m_publish_id'],"menu_positions",1,"approve_status",3);
@@ -469,7 +469,7 @@ include('../counter.php');
 							  <?php } ?> 
 						  </li>
 						  <?php } ?>
-						  <li><a href="<?php echo $HomeURL;?>/view-all.php?menu=<?php echo $value['m_name'];?>" title="View All">View All</a></li>
+						  <li><a href="<?php echo $HomeURL;?>/hi/view-all.php?menu=<?php echo $value['m_name'];?>" title="View All">सभी देखें</a></li>
 						</ul>
 					</li>
               <?php } ?>

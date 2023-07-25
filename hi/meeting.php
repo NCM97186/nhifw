@@ -6,6 +6,7 @@ require_once "includes/function-front.php";
 include('../design.php');
 include('../counter.php');
  
+
  
 $url = strtolower(content_desc(htmlspecialchars($_SERVER['REQUEST_URI'])));   
 	 if(strstr($url,'script')!=FALSE)
@@ -30,9 +31,8 @@ if($_SERVER['REQUEST_URI'])
 			$url=$val['4'];
 		}
 		
-if($mydb->checkTable_threeRow("latest_information_publish","page_url",$url,"approve_status",3,"language_id",1)>0){
-			$contentrows=$mydb->gettable_RowsthreeColumn_where("latest_information_publish","page_url",$url,"approve_status",3,"language_id",1);
-
+if($mydb->checkTable_threeRow("latest_information_publish","page_url",$url,"approve_status",3,"language_id",2)>0){
+			$contentrows=$mydb->gettable_RowsthreeColumn_where("latest_information_publish","page_url",$url,"approve_status",3,"language_id",2);
 		 }
 
 foreach($contentrows as $key=>$value){ 
@@ -85,24 +85,46 @@ echo $res.'hello';
 
 exit();*/
 
-if (isset($textcatgory)) {
-
+//if (isset($textcatgory)) {
+if(isset($_POST['textcatgory'])){
+	
+	$whereClause12 ="";
 	$textcatgory = mysqli_real_escape_string($conn,$_POST['textcatgory']);
 		
 
   $date1=date('Y-m-d');
+  $start_date=$_POST['startdate'];
+  $end_date=$_POST['expairydate'];
+	if(!empty($start_date) && !empty($end_date)){
+		
+		$start_date=date('Y-m-d',strtotime($_POST['startdate']));
+		$end_date=date('Y-m-d',strtotime($_POST['expairydate']));
+		$whereClause12 .="and start_date between '".$start_date."' and '".$end_date."' " ;
+
+	}elseif(!empty($start_date)){
+		
+		$start_date=date('Y-m-d',strtotime($_POST['startdate']));
+		$end_date=date('Y-m-d');
+		$whereClause12 .="and start_date between '".$start_date."' and '".$end_date."' " ;
+
+	}elseif(!empty($end_date)){
+		
+		$start_date=date('Y-m-d',strtotime('01-01-1970'));
+		$end_date=date('Y-m-d',strtotime($_POST['expairydate']));
+		$whereClause12 .="and start_date between '".$start_date."' and '".$end_date."' " ;
+
+	}
+	if ($textcatgory != '') {
+		$whereClause12 .="and cat_id=$textcatgory " ;
+	}
   if($mydb->checkTableRow("latest_information_publish",$conn)>0){
   
 
-  if ($textcatgory != '') {
-  	$whereClause12 ="and cat_id=$textcatgory " ;
-  }
-  else
-  {
-  	$whereClause12 ="" ;	
-  }
 
-  $whereClause1="approve_status='3' && language_id='1' $whereClause12  order by start_date desc" ;
+
+  $whereClause1="approve_status='3' && language_id='2' $whereClause12  order by start_date desc" ;
+
+
    $newsrows1=$mydb->gettable_Rows_whereCluse("latest_information_publish",$whereClause1); 
    if(is_array($newsrows1)){
 					  $no_of_rows1= count($newsrows1);
@@ -116,12 +138,15 @@ if (isset($textcatgory)) {
 
 $j = 1;
 echo '<table width="100%" class="table table-bordered" id="backend">
-<caption> Meetings &amp; Events / Workshop &amp; Training</caption><tbody><tr>
-				<th>Sr.</th>
-				<th width="13%">Date</th>
-				<th width="13%">Time of Meeting	</th>
-				<th>Meeting Details</th>
-				<th>Collaborating Organisation</th>
+<caption>बैठक एवं घटनाक्रम / कार्यशाला और प्रशिक्षण"</caption>
+		<tbody>
+			<tr>
+				<th>क्रम संख्या</th>
+				<th width="13%">तिथि</th>
+				<th width="13%">बैठकें का समय</th>
+				<th>बैठकें का विवरण</th>
+				<th>सहयोगी संगठन</th>
+			
 			</tr>';
  	 foreach($newsrows1 as $key=>$value){
 
@@ -165,7 +190,6 @@ echo '</tbody></table>';
  }
  
 }
- 
 ?>
 
 
@@ -178,10 +202,12 @@ echo '</tbody></table>';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>National Institute of Health & Family Welfare</title>
+    <title>राष्ट्रीय स्वास्थ्य और परिवार कल्याण संस्थान</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $HomeURL;?>/css/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS  -->
+	<!--link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" type="text/css"-->
+   
     <link href="<?php echo $HomeURL;?>/css/style.css" rel="stylesheet">  
     
     <link href="<?php echo $HomeURL;?>/css/print.css" rel="stylesheet" type="text/css" media="print">
@@ -193,172 +219,7 @@ echo '</tbody></table>';
     <link rel="stylesheet" href="<?php echo $HomeURL;?>/css/meanmenu.css" />
     <!-- Custom Fonts -->
     <link href="font-awesome/<?php echo $HomeURL;?>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="<?php echo $HomeURL;?>/js/html5shiv.js"></script>
-        <script src="<?php echo $HomeURL;?>/js/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- jQuery -->
-    <script src="<?php echo $HomeURL;?>/js/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo $HomeURL;?>/js/bootstrap.min.js"></script>    
-    <!-- Menu Access for Tab Key -->
-	<script src="<?php echo $HomeURL;?>/js/superfish.js"></script>    
-    <!-- font Size Increase Decrease -->
-    <script src="<?php echo $HomeURL;?>/js/font-size.js"></script>    
-	<script src="<?php echo $HomeURL;?>/js/swithcer.js"></script>
-		<script type="text/javascript" src="<?php echo $HomeURL;?>/js/jsDatePick.js"></script>
-<link href="<?php echo $HomeURL;?>/css/jsDatePick.css" rel="stylesheet" type="text/css" />
-	<script>
-
-        // initialise plugins
-     if(getCookie("mysheet") == "change" ) {
-        setStylesheet("change") ;
-    }else if(getCookie("mysheet") == "style" ) {
-        setStylesheet("style") ;
-    }else if(getCookie("mysheet") == "green" ) {
-        setStylesheet("green") ;
-    } else if(getCookie("mysheet") == "orange" ) {
-        setStylesheet("orange") ;
-    }else   {
-        setStylesheet("") ;
-    }
-	</script>
-
-	<script>
-
-	(function($){ //create closure so we can safely use $ as alias for jQuery
 	
-	$(document).ready(function(){
-	
-	// initialise plugin
-	var example = $('#example').superfish({
-	//add options here if required
-	});
-	
-	// buttons to demonstrate Superfish's public methods
-	$('.destroy').on('click', function(){
-	example.superfish('destroy');
-	});
-	
-	$('.init').on('click', function(){
-	example.superfish();
-	});
-	
-	$('.open').on('click', function(){
-	example.children('li:first').superfish('show');
-	});
-	
-	$('.close').on('click', function(){
-	example.children('li:first').superfish('hide');
-	});
-	});
-	
-	})(jQuery);
-	</script>
-
-	<script>
-    (function($){ //create closure so we can safely use $ as alias for jQuery
-    
-    $(document).ready(function(){
-    
-    // initialise plugin
-    var example = $('#example1').superfish({
-    //add options here if required
-    });
-    
-    // buttons to demonstrate Superfish's public methods
-    $('.destroy').on('click', function(){
-    example.superfish('destroy');
-    });
-    
-    $('.init').on('click', function(){
-    example.superfish();
-    });
-    
-    $('.open').on('click', function(){
-    example.children('li:first').superfish('show');
-    });
-    
-    $('.close').on('click', function(){
-    example.children('li:first').superfish('hide');
-    });
-    });
-    
-    })(jQuery);
-    </script>
-
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-	<script src="<?php echo $HomeURL;?>/js/modern-ticker.js" type="text/javascript"> </script>
-	<script type="text/javascript">
-
-		 window.onload = function(){
-	new JsDatePick({
-		useMode:2,
-		target:"startdate",
-		dateFormat:"%d-%m-%Y"
-	});
-	new JsDatePick({
-		useMode:2,
-		target:"expairydate",
-		dateFormat:"%d-%m-%Y"
-	});
-}; 
-
-
-            $(function () {
-                $(".ticker1").modernTicker({
-                    effect: "scroll",
-                    scrollInterval: 20,
-                    transitionTime: 500,
-                    autoplay: true
-                });
-                });
-	</script>
-    
-	<script type="text/javascript" src="<?php echo $HomeURL;?>/js/jquery.totemticker.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			$('#vertical-ticker').totemticker({
-				row_height	:	'100px',
-				next		:	'#ticker-next',
-				previous	:	'#ticker-previous',
-				stop		:	'#stop',
-				start		:	'#start',
-				mousestop	:	true,
-			});
-		});
-	</script>
-    
-	<script src="<?php echo $HomeURL;?>/js/jquery.meanmenu.js"></script>   
-    <script type="text/jscript">
-    jQuery(document).ready(function () {
-        jQuery('#main-nav nav').meanmenu()
-    });
-    </script>   
-
-	<script type='text/javascript'>//<![CDATA[ 
-    $(window).load(function(){
-    $(function () {
-        $('#homeCarousel').carousel({
-            interval:2000,
-            pause: "false"
-        });
-        $('#playButton').click(function () {
-            $('#homeCarousel').carousel('cycle');
-        });
-        $('#pauseButton').click(function () {
-            $('#homeCarousel').carousel('pause');
-        });
-    });
-    });//]]>  
-    </script> 
-
 </head>
 
 <body id="fontSize">
@@ -391,8 +252,8 @@ echo '</tbody></table>';
 <div class="row">
             <div class="col-md-12">
             <ol class = "breadcrumb breadcrum-margin-top">
-   <li><a href = "<?php echo $HomeURL;?>" title="Home">Home</a></li>
-   <li class = "active"><a href="<?php echo $HomeURL;?>/meeting.php" title="Meetings & Events / Workshop & Training">Meetings & Events / Workshop & Training</a></li>
+   <li><a href = "<?php echo $HomeURL;?>/hi" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
+   <li class = "active"><a href="<?php echo $HomeURL;?>/meeting.php" title="बैठक एवं घटनाक्रम / कार्यशाला और प्रशिक्षण">बैठक एवं घटनाक्रम / कार्यशाला और प्रशिक्षण"</a></li>
 	 <?php if($_POST['page']!='') { ?> 
 	   <li class = "active"><?php echo $page_name;?></li>
 
@@ -417,14 +278,12 @@ echo '</tbody></table>';
   <?php
   $date=date('Y-m-d');
   if($mydb->checkTableRow("latest_information_publish",$conn)>0){
-$whereClause="approve_status='3' && language_id='1' &&  end_date  >= '$date'  order by start_date desc" ;
-    //$whereClause="approve_status='3' && language_id='1'   order by start_date desc" ;
+// $whereClause="approve_status='3' && language_id='2' && date(end_date ) >= '$date'  order by start_date desc" ;
+  $whereClause="approve_status='3' && language_id='2'   order by start_date desc" ;
 
    $newsrows=$mydb->gettable_Rows_whereCluse("latest_information_publish",$whereClause); 
-   //print_r($newsrows);
    if(is_array($newsrows)){
 					  $no_of_rows= count($newsrows);
-					  //print_r($no_of_rows);
 					 }else{
 					  $no_of_rows= $newsrows;
 					}
@@ -435,34 +294,34 @@ $whereClause="approve_status='3' && language_id='1' &&  end_date  >= '$date'  or
 					 <?php if($_POST['page']!='') { ?> 
 					<?php echo $page_name;?>
 				 <?php }  else { ?>
-				Meetings & Events / Workshop & Training
+					बैठक एवं घटनाक्रम / कार्यशाला और प्रशिक्षण"
 				<?php } ?>
 				</h2>
 
 				<p style="text-align:right; font-size:14px; color:black; font-weight:bold;">
-    <a href="archive.php?cat=2" > Archive</a></p>
+    <a href="archive.php?cat=2" > पुरालेख</a></p>
 
 <div class="archive-grid">  
-	<form  action="" name="searchform" id="searchform" method="post">
+	<form  action="javascript:void(0);" name="searchform" id="searchform" method="post">
 		
 		<div class="acchive-div">
-				<label for="textcatgory"><strong>Category:</strong></label>
+				<label for="textcatgory"><strong>वर्ग:</strong></label>
 				<select name="textcatgory" id="textcatgory">
-					 <option value="">Select</option>
-					 <option value="1">Meetings/Events</option>
-					 <option value="2">Workshop/Training</option>
+					 <option value="">चुनना</option>
+					 <option value="1">बैठकें/कार्यक्रम</option>
+					 <option value="2">कार्यशाला/प्रशिक्षण</option>
 				</select>
 		</div>
 				
 
 		<div class="acchive-div">
-			<label for="startdate">From Date:</label>
+			<label for="startdate">तिथि से:</label>
 			<input type="text" name="startdate"  readonly="readonly" id="startdate" value="<?php echo content_desc($_POST['startdate']);?>"/>
 			<input type="hidden" id="strtdate" />
 		</div>
 		
 		<div class="acchive-div">
-			<label for="expairydate">To Date:</label>
+			<label for="expairydate">तिथि तक:</label>
 			<input type="text" name="expairydate" readonly="readonly"  id="expairydate" value="<?php echo content_desc($_POST['expairydate']);?>"/>
 			<input type="hidden" id="edate" />
 		</div>
@@ -479,32 +338,7 @@ $whereClause="approve_status='3' && language_id='1' &&  end_date  >= '$date'  or
 <div id="tbl_newdata"> 
 
 </div>
-	<script type="text/javascript">
-		
-		$('#cmdsubmit').click(function(){
-           
-
-			var mydata = $('#searchform').serializeArray();
-			//alert(mydata);
-			//$('#backend').show();
-			$.ajax({
-					type:'Post',
-					data:{mydata:mydata},
-					url:"meeting.php",
-					dataType: "html", 
-					success:function(data){
-						alert(data);
-						//console.log(data);
-						 $('#tbl_data').hide();
-
-						 $('#tbl_newdata').show();
-						 $('#tbl_newdata').html(data);
-
-					}
-			});
-
-		});
-	</script>
+	
      <?php 
 
 
@@ -512,14 +346,14 @@ $whereClause="approve_status='3' && language_id='1' &&  end_date  >= '$date'  or
 
       if($_POST['page']=='') { ?>           
  <table width="100%"  class="table table-bordered" id="tbl_data">
-<caption> Meetings & Events / Workshop & Training</caption>
+<caption>बैठक एवं घटनाक्रम / कार्यशाला और प्रशिक्षण"</caption>
 		<tbody>
 			<tr>
-				<th>Sr.</th>
-				<th width="13%">Date</th>
-				<th width="13%">Time of Meeting	</th>
-				<th>Meeting Details</th>
-				<th>Collaborating Organisation</th>
+				<th>क्रम संख्या</th>
+				<th width="13%">तिथि</th>
+				<th width="13%">बैठकें का समय</th>
+				<th>बैठकें का विवरण</th>
+				<th>सहयोगी संगठन</th>
 			</tr>
 			 <?php 
 			 $i=1;
@@ -586,16 +420,185 @@ $whereClause="approve_status='3' && language_id='1' &&  end_date  >= '$date'  or
     	 <?php include('footer.php');?>	
     </div>
 	<!-- Footer part -->    
+ <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="<?php echo $HomeURL;?>/js/html5shiv.js"></script>
+        <script src="<?php echo $HomeURL;?>/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery -->
+    <script src="<?php echo $HomeURL;?>/js/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo $HomeURL;?>/js/bootstrap.min.js"></script>    
+    <!-- Menu Access for Tab Key -->
+	<script src="<?php echo $HomeURL;?>/js/superfish.js"></script>    
+    <!-- font Size Increase Decrease -->
+    <script src="<?php echo $HomeURL;?>/js/font-size.js"></script>    
+	<script src="<?php echo $HomeURL;?>/js/swithcer.js"></script>
+		<script type="text/javascript" src="<?php echo $HomeURL;?>/js/jsDatePick.js"></script>
+<link href="<?php echo $HomeURL;?>/css/jsDatePick.css" rel="stylesheet" type="text/css" />
+
+<!-- <link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/css/jquerysctipttop.css"/>
+<link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/demo/Clean-jQuery-Date-Time-Picker-Plugin-datetimepicker/jquery.datetimepicker.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://www.jqueryscript.net/demo/Clean-jQuery-Date-Time-Picker-Plugin-datetimepicker/jquery.datetimepicker.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+	<script src="<?php echo $HomeURL;?>/js/modern-ticker.js" type="text/javascript"> </script>
+	<script type="text/javascript" src="<?php echo $HomeURL;?>/js/jquery.totemticker.js"></script>
+	<script src="<?php echo $HomeURL;?>/js/jquery.meanmenu.js"></script> 
 	<script type="text/javascript">
+		
+		$('#cmdsubmit').click(function(){
 
-	$('#startdate').datetimepicker({
+			mydata = $('#searchform').serialize();
+			
+			$('#backend').show();
+			$.ajax({
+					type:'post',
+					data:mydata,
+					url:'meeting.php',
+					success:function(htm){
+						console.log(htm);
+						 $('#tbl_data').hide();
+
+						 $('#tbl_newdata').show();
+						 $('#tbl_newdata').html(htm);
+
+					}
+			});
+
+		});
+
+        // initialise plugins
+     if(getCookie("mysheet") == "change" ) {
+        setStylesheet("change") ;
+    }else if(getCookie("mysheet") == "style" ) {
+        setStylesheet("style") ;
+    }else if(getCookie("mysheet") == "green" ) {
+        setStylesheet("green") ;
+    } else if(getCookie("mysheet") == "orange" ) {
+        setStylesheet("orange") ;
+    }else   {
+        setStylesheet("") ;
+    }
+
+	(function($){ //create closure so we can safely use $ as alias for jQuery
+	
+	$(document).ready(function(){
+	
+	// initialise plugin
+	var example = $('#example').superfish({
+	//add options here if required
+	});
+	
+	// buttons to demonstrate Superfish's public methods
+	$('.destroy').on('click', function(){
+	example.superfish('destroy');
+	});
+	
+	$('.init').on('click', function(){
+	example.superfish();
+	});
+	
+	$('.open').on('click', function(){
+	example.children('li:first').superfish('show');
+	});
+	
+	$('.close').on('click', function(){
+	example.children('li:first').superfish('hide');
+	});
+	});
+	
+	})(jQuery);
+    (function($){ //create closure so we can safely use $ as alias for jQuery
+    
+    $(document).ready(function(){
+    
+    // initialise plugin
+    var example = $('#example1').superfish({
+    //add options here if required
+    });
+    
+    // buttons to demonstrate Superfish's public methods
+    $('.destroy').on('click', function(){
+    example.superfish('destroy');
+    });
+    
+    $('.init').on('click', function(){
+    example.superfish();
+    });
+    
+    $('.open').on('click', function(){
+    example.children('li:first').superfish('show');
+    });
+    
+    $('.close').on('click', function(){
+    example.children('li:first').superfish('hide');
+    });
+    });
+    
+    })(jQuery);
+
+		 window.onload = function(){
+	new JsDatePick({
+		useMode:2,
+		target:"startdate",
+		dateFormat:"%d-%m-%Y"
+	});
+	new JsDatePick({
+		useMode:2,
+		target:"expairydate",
+		dateFormat:"%d-%m-%Y"
+	});
+}; 
+
+
+            $(function () {
+                $(".ticker1").modernTicker({
+                    effect: "scroll",
+                    scrollInterval: 20,
+                    transitionTime: 500,
+                    autoplay: true
+                });
+                });
+		$(function(){
+			$('#vertical-ticker').totemticker({
+				row_height	:	'100px',
+				next		:	'#ticker-next',
+				previous	:	'#ticker-previous',
+				stop		:	'#stop',
+				start		:	'#start',
+				mousestop	:	true,
+			});
+		});
+    jQuery(document).ready(function () {
+        jQuery('#main-nav nav').meanmenu()
+    //});
+    //$(window).load(function(){
+    $(function () {
+        $('#homeCarousel').carousel({
+            interval:2000,
+            pause: "false"
+        });
+        $('#playButton').click(function () {
+            $('#homeCarousel').carousel('cycle');
+        });
+        $('#pauseButton').click(function () {
+            $('#homeCarousel').carousel('pause');
+        });
+    });
+    }); /*
+	$('#startdate').datepicker({
+		timepicker:false
  
 });
 
 
-	$('#expairydate').datetimepicker({
+	$('#expairydate').datepicker({
+		timepicker:false
  
-});
+});*/
 
 /*window.onload = function(){
 	new JsDatePick({

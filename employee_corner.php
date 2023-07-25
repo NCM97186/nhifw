@@ -254,7 +254,7 @@ $_GET['page']=base64_decode($_GET['page_id']);
 	
 </div>
 </div>
- <?php include("left_menu.php");?>
+ <?php //include("left_menu.php");?>
 
           </div>
 

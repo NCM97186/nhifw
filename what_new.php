@@ -19,8 +19,9 @@ $whereClause="approve_status='3' && language_id='1' && date(end_date ) >= '$date
             <p class="n-play-pause">
                 <!--<a href="#" id="ticker-previous" title="Previous"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i></a>
                 <a href="#" id="ticker-next" title="Next"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>-->
-                <a id="stop" href="#" title="Stop">Stop</a>
-                <a id="start" href="#" title="Play">Play</a>
+				  <a id="start" href="#" title="Play"><span class="glyphicon glyphicon-play"></span></a>
+                <a id="stop" href="#" title="Stop"><span class="glyphicon glyphicon-pause"></span></a>
+              
             </p>
 		</div>
 		<div class="whats-new">

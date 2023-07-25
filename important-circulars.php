@@ -291,7 +291,7 @@ foreach($contentrows as $key=>$value){
 		</div>
 		</div>
 
-		<?php include("left_menu.php");?>
+		<?php //include("left_menu.php");?>
 		 
 		</div>
           

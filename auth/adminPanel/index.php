@@ -109,19 +109,19 @@ $password = $_POST['txtpassword'];
 		$_SESSION['sess_msg'] = $msg;
 	}
 
-	else if($_POST['code']!="")
+	else if($_POST['code']=="")
 	{
 		
-		if($_SESSION['CAPTCHA_CODE'] == $_POST['code']) 
-		{	
-		}
-		else
-		{
-			$msg="Please enter correct code.";
-			$_SESSION['sess_msg'] = $msg;      
-			header("Location: index.php"); 
-			exit;
-		}
+		// if($_SESSION['CAPTCHA_CODE'] == $_POST['code']) 
+		// {	
+		// }
+		// else
+		// {
+		// 	$msg="Please enter correct code.";
+		// 	$_SESSION['sess_msg'] = $msg;      
+		// 	header("Location: index.php"); 
+		// 	exit;
+		// }
         
 		   $password1 = strtoupper($password);
 		  //$qry="SELECT id,login_name,user_name,sha_key,user_pass,role_id,last_login_date,flag_id,login_flag,login_count from admin_login where user_status='1' "; 
@@ -154,14 +154,14 @@ $password = $_POST['txtpassword'];
 			$login_flag = $data['login_flag'];
 			
 
-			// if($login_flag == 1){
+			if($login_flag == 1){
 				
-			// $msg="You may also be logged in from another system. Kindly log out and try agains";   
-			// $_SESSION['sess_msg'] = $msg;
-			// header("Location: index.php");
-			// exit;
+			$msg="You may also be logged in from another system. Kindly log out and try agains";   
+			$_SESSION['sess_msg'] = $msg;
+			header("Location: index.php");
+			exit;
 			
-			// }
+			}
 // echo $db_pwd.'<br>';
 // echo $newpwd.'<br>';
 // echo trim($password1).'<br>';
@@ -217,8 +217,6 @@ $password = $_POST['txtpassword'];
 						$date=date("Y-m-d h:i:s");
 						$ip=$_SERVER['REMOTE_ADDR'];
 						$tableName="audit_trail";
-						$txtlanguage = 0;
-						$txtstatus = 3;
 						$tableFieldsName_send=array("user_login_id","page_id","page_name","page_action","page_category","page_action_date","ip_address","lang","page_title","approve_status");
 						$tableFieldsValues_send=array($user_id,$page_id,$txtename,$action,$model_id,$date,$ip,$txtlanguage,$txtepage_title,$txtstatus);
 
@@ -284,7 +282,7 @@ $password = $_POST['txtpassword'];
 		var salt = '<?php echo $_SESSION['salt']; ?>'; 
 	// alert(salt);
 	// exit;
-		var exp= /((?=.*\d)(?=.*[a-z])(?=.*[@#$%]).{6,10})/;
+		var exp= /((?=.\d)(?=.[a-z])(?=.*[@#$%]).{6,10})/;
        
 		var value = document.getElementById('txtpassword').value;
 

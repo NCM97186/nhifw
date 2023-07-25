@@ -212,8 +212,8 @@ include('../../counter.php');
 <div class="row">
           <div class="col-md-12">
             <ol class = "breadcrumb breadcrum-margin-top">
-   <li><a href = "<?php echo $HomeURL;?>" title="Home">Home</a></li>
-   <li class = "active">Site Map</li>
+<li  ><a href="<?php echo $HomeURL;?>/hi" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
+   <li class = "active">साईट-मेप</li>
    
 
 </ol>
@@ -240,7 +240,7 @@ include('../../counter.php');
                 <h2 class="heading">Site Map</h2>
    
 <ul>
-<li  ><a href="<?php echo $HomeURL;?>/hi" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
+
 	<?php 
 		if($mydb->checkTable_threeRow("menu_publish","m_flag_id",0,"menu_positions",1,"approve_status",3)>0){
 		

@@ -18,7 +18,7 @@ include('../design.php');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>National Institute of Health & Family Welfare</title>
+<title>राष्ट्रीय स्वास्थ्य एवं परिवार कल्याण संस्थान</title>
 <link href="<?php echo $HomeURL;?>/css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo $HomeURL;?>/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo $HomeURL;?>/css/style.css" rel="stylesheet">
@@ -164,7 +164,7 @@ jQuery(document).ready(function () {
 <!-- Logo Part Start -->
 <div id="main-nav" class="navigation-bg">
   <nav>
-    <div class="container">
+    <div class="">
       <?php include('navigation.php');?>
     </div>
   </nav>
@@ -194,7 +194,7 @@ jQuery(document).ready(function () {
      	<?php
   $date=date('Y-m-d');
   if($mydb->checkTableRow("whatsnew_publish")>0){
-$whereClause="approve_status='3' && language_id='1'   order by start_date desc" ;
+$whereClause="approve_status='3' && language_id='2'   order by start_date desc" ;
    $newsrows=$mydb->gettable_Rows_whereCluse("whatsnew_publish",$whereClause); 
    if(is_array($newsrows)){
 					  $no_of_rows= count($newsrows);
@@ -208,8 +208,13 @@ $whereClause="approve_status='3' && language_id='1'   order by start_date desc" 
             <p class="n-play-pause">
                 <a href="#" id="ticker-previous" title="Previous"><i class="fa fa-caret-square-o-left" aria-hidden="true"></i></a>
                 <a href="#" id="ticker-next" title="Next"><i class="fa fa-caret-square-o-right" aria-hidden="true"></i></a>
-                <a id="stop" href="#" title="Stop"><i class="fa fa-stop" aria-hidden="true"></i></a>
-                <a id="start" href="#" title="Play"><i class="fa fa-play" aria-hidden="true"></i></a>
+				 <a id="start" style="background: #0000; color: #fff;" title="शुरू">
+					<span class="glyphicon glyphicon-play"></span>
+				  </a><a id="stop" style="background: #0000; color: #fff;" title="रोकना">
+					<span class="glyphicon glyphicon-pause"></span>
+				  </a>
+                <!--a id="stop" href="#" title="रुकना">रुकना<i class="fa fa-stop" aria-hidden="true"></i></a>
+                <a id="start" href="#" title="शुरू">शुरू<i class="fa fa-play" aria-hidden="true"></i></a-->
             </p>
 		</div>
 		<div class="whats-new">

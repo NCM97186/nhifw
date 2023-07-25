@@ -1,11 +1,10 @@
 <div class="container">
         <div>
     	<div>
-        <p style="margin-top:5px">Beta Version</p>
         <ul class="top-menu" id="example1">
           
         <li>
-<a href="#skipContent"><img src="<?php echo $HomeURL;?>/images/ico-skip.png" width="24" height="24" alt="Skip Main Content" title="Skip Main Content"></a></li>
+<a href="#main-nav"><img src="<?php echo $HomeURL;?>/images/ico-skip.png" width="24" height="24" alt="Skip Main Content" title="Skip Main Content"></a></li>
         
         
         <li><a href="<?php echo $HomeURL;?>/screenreaderaccess.php"><img src="<?php echo $HomeURL;?>/images/sc.png" width="24" height="24" alt="Screen-Reader-Access" title="Screen Reader Access"></a></li>

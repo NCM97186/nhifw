@@ -52,13 +52,14 @@ if($role_id !='0' && $user_id !='101')
 		header("Location:error.php");
 		exit;	
 }
+$sub_flag_id =content_desc(check_input($_POST['sub_flag_id']));
 
 if($btnsubmit=="Search" || $sub_flag_id!='')
 {
-	  $user =content_desc(check_input($_POST['user']));
+	   $user =content_desc(check_input($_POST['user']));
 		$sub_flag_id =content_desc(check_input($_POST['sub_flag_id']));
 		$btneng =content_desc(check_input($_POST['btneng']));
-$startdate =content_desc(check_input($_POST['startdate']));
+        $startdate =content_desc(check_input($_POST['startdate']));
 		$expairydate =content_desc(check_input($_POST['expairydate']));
 	  
 	   if($user!='')
@@ -119,10 +120,10 @@ $startdate =content_desc(check_input($_POST['startdate']));
 	    if($startdate!='' && $expairydate !='')
 	  {
 	
-	$sta=split('-',$startdate);
-$startdate=$sta['2']."-".$sta['1']."-".$sta['0'];
-$exp=split('-',$expairydate);
-$expairydate=$exp['2']."-".$exp['1']."-".$exp['0'];
+$startdate=date("Y-m-d", strtotime($startdate));
+
+$expairydate=date("Y-m-d", strtotime($expairydate));
+
 			$querywhere .=" and date(audit_trail.page_action_date) between '$startdate' and '$expairydate'";
 	  }
 	  
@@ -284,13 +285,14 @@ $res_rows=mysqli_num_rows($contrator_result);
 <label for="user" class="labelClass">Page name:</label>
 <input id="user"   name="user" type="text" title="Search title or alias."   size="10" value="<?php echo content_desc($_POST['user']);?>" >
 <label for="sub_flag_id" class="labelClass">Module:</label>
+
 <select name="sub_flag_id" autocomplete="off" id="sub_flag_id"  size="1"  style="width: 225px">
 <option value=""> Select </option>
 <?php 
 while($fetch_result=mysqli_fetch_array($contrator_result))
 { 
 ?>
-<option value="<?php echo content_desc($fetch_result['module_id']); ?>"  <?php if ($sub_flag_id==$fetch_result['module_name']) echo 'selected="selected"';?>><?php echo $fetch_result['module_name']; ?> </option>
+<option value="<?php echo content_desc($fetch_result['module_id']); ?>"  <?php if ($sub_flag_id==$fetch_result['module_id']) echo 'selected="selected"';?>><?php echo $fetch_result['module_name']; ?> </option>
 <?php
 }
 	  }

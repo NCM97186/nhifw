@@ -224,10 +224,9 @@ if(($inactiveid !=''))
 		if($txtstatus=='')
 		{
 		$errmsg .="Please select Status.<br>";
-		}
-		else { 
+		}else { 
 				
-  $querywhere .=" and approve_status=$txtstatus"; 
+		$querywhere .=" and approve_status=$txtstatus"; 
 		 
 		
 		}
@@ -236,50 +235,48 @@ if(($inactiveid !=''))
 	  {
 		unset($_SESSION['lname']); 
 		$_SESSION['lname']=$btneng;
-			if($_SESSION['lname']=='English'){ $language='1';
-			} else { $language='2';
+			if($_SESSION['lname']=='English'){ 
+			   $language='1';
+			} else {
+			  $language='2';
 			}
 			$querywhere .=" and language_id=$language";
 	  }
 	 
-	  if($errmsg=='')	
-	  {
-	  $date=date('Y-m-d');
- //$query ="select * from importent_information where 1  $querywhere && date(end_date ) >= '$date'  ORDER BY page_postion ASC "; 
+		if($errmsg=='')	{
+			$date=date('Y-m-d');
+			$query ="select * from importent_information where 1  $querywhere && end_date  >= '$date'  ORDER BY page_postion ASC "; 
 
-  $query ="select * from importent_information"; 
- // Modifed due to data expiry no result shown 18062022
-  //where 1  $querywhere && date(end_date ) >= '$date'  ORDER BY page_postion ASC ";
-	  }
-	 else
-	{
-	$_SESSION['errors']=$errmsg;
-	}	
-}
-else { 
-if($role_map['draft']=='DR' || $role_map['mapprove']=='AP'  || $user_id=='101' || $user_id=='104'){
-	if($_GET['txtstatus'] !='')
-	 {
-			if($_GET['txtstatus'] =='3')
-			{
-			$where= "and approve_status =".$_GET['txtstatus'];
-			}
-			else { $where=" and approve_status =". $_GET['txtstatus'];} 
-	 }
-	 else { $where= "and approve_status=1"; }
-$wherecluse=" and language_id=$language $where";
-}
- if($role_map['pending']=='PND' || $role_map['publish']=='PB'){
-	if($_GET['txtstatus'] !='')
-	 {
-		$txtstatus=$_GET['txtstatus'];
-	 }	 
-	 else { $txtstatus=3; }
-$wherecluse=" and language_id=$language and approve_status='$txtstatus'";
-}
-$date=date('Y-m-d');
-//$query ="select * from importent_information where 1 $wherecluse && date(end_date ) >= '$date' ORDER BY page_postion ASC ";
-$query ="select * from importent_information where 1 ORDER BY page_postion ASC ";
+		 // $query ="select * from importent_information"; 
+		 // Modifed due to data expiry no result shown 18062022
+		  //where 1  $querywhere && date(end_date ) >= '$date'  ORDER BY page_postion ASC ";
+		} else{
+			$_SESSION['errors']=$errmsg;
+		}	
+}else { 
+	if($role_map['draft']=='DR' || $role_map['mapprove']=='AP'  || $user_id=='101' || $user_id=='104'){
+		if($_GET['txtstatus'] !='')
+		 {
+				if($_GET['txtstatus'] =='3')
+				{
+				$where= "and approve_status =".$_GET['txtstatus'];
+				}
+				else { $where=" and approve_status =". $_GET['txtstatus'];} 
+		 }else { $where= "and approve_status=3"; }
+		 $wherecluse=" and language_id=$language $where";
+	}
+    if($role_map['pending']=='PND' || $role_map['publish']=='PB'){
+		if($_GET['txtstatus'] !='') {
+			$txtstatus=$_GET['txtstatus'];
+		 } else { 
+			$txtstatus=3; 
+		 }
+	  $wherecluse=" and language_id=$language and approve_status='$txtstatus'";
+		
+	}
+	$date=date('Y-m-d');
+	$query ="select * from importent_information where 1 $wherecluse && end_date  >= '$date' ORDER BY page_postion ASC ";
+	//$query ="select * from importent_information where 1 $wherecluse ORDER BY page_postion ASC ";
 
 }
 ?>      
@@ -403,6 +400,7 @@ foreach($info_category as $key=>$value)
     <div id="response"> </div>
   
 							<?php	
+							//echo $query;
 							$pager = new PS_Pagination($conn, $query);
 							$rs = $pager->paginate($conn, $query);
 							// $rs = mysqli_query($conn,$query);

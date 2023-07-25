@@ -814,23 +814,25 @@ $tableName_send="latest_information";
 $old=array("language_id","m_name","cat_id","m_short","m_title","m_content","page_url","start_date","end_date","start_time","end_time","approve_status","admin_id","c_new_status","create_date","ext_url","content_type","m_keyword","m_description","update_date");
 $new=array("$txtlanguage","$txtename","$cat_id","$sortcontentdesc","$m_title1","$txtcontentdesc","$url","$startdate","$expairydate","$startdate_time","$expairydate_time","$txtstatus","$user_id","$newicons","$create_date","$txtweblink","$texttype","$txtekeyword","$txtmeta_description","$update_date");
 
-	$useAVclass->UpdateQuery($tableName_send,$whereclause,$old,$new);
+$useAVclass->UpdateQuery($tableName_send,$whereclause,$old,$new);
 
 
-if($txtstatus=='3')
-{
+if($txtstatus=='3' || $txtstatus=='2' || $txtstatus=='1')
+{ 
 	
 	$create_date=date('y-m-d');
-	$whereclause_m="where m_id=$cid";
+	$whereclause_m="where m_publish_id=$cid";
 $sql=mysqli_query($conn,"Select * from latest_information_publish $whereclause_m");
 $row=mysqli_num_rows($sql); 
 	if($row >0)
 	{
  	$create_date=date('y-m-d');
-	$whereclause_pub="m_id=$cid";
+	$whereclause_pub="m_publish_id=$cid";
 $tableName_send_pub="latest_information_publish";
 $old_pub=array("language_id","m_name","cat_id","m_short","m_title","m_content","page_url","start_date","end_date","start_time","end_time","approve_status","admin_id","c_new_status","create_date","ext_url","content_type","m_keyword","m_description","update_date");
 $new_pub=array("$txtlanguage","$txtename","$cat_id","$sortcontentdesc","$m_title1","$txtcontentdesc","$url","$startdate","$expairydate","$startdate_time","$expairydate_time","$txtstatus","$user_id","$newicons","$create_date","$txtweblink","$texttype","$txtekeyword","$txtmeta_description","$update_date");
+
+
 	$useAVclass->UpdateQuery($tableName_send_pub,$whereclause_pub,$old_pub,$new_pub);
 	
 

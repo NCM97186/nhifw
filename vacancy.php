@@ -332,95 +332,49 @@ window.onload = function(){
 				 
 				 
 				 </h2>
-				 <a href="http://localhost/nihfw/archive.php?cat=6" style="float: right;"  title="&nbsp;<strong>Archive</strong>">&nbsp;<strong>Archive</strong>&nbsp;<img src="http://localhost/nihfw/images/extlink.png" alt="external link"></a>
+				 <a href="<?php echo $HomeURL;?>/archive.php?cat=6" style="float: right;"  title="&nbsp;<strong>Archive</strong>">&nbsp;<strong>Archive</strong>&nbsp;<img src="<?php echo $HomeURL;?>/images/extlink.png" alt="external link"></a>
 
 <div class="archive-grid">  
 
 <form  action="" name="searchform" method="post">
-<?php if(isset($cmdsubmit) || $_GET['textcategory']!='' || $_GET['startdate']!='' ||  $_GET['expairydate']!='')
-{
-
+<?php 
+$cmdsubmit=content_desc($_POST['cmdsubmit']);
 $textcatgory=content_desc($_POST['textcatgory']);
-
 $startdate=content_desc($_POST['startdate']);
+
 $expairydate=content_desc($_POST['expairydate']);
+	if(isset($cmdsubmit) || $_GET['textcategory']!='' || $_GET['startdate']!='' ||  $_GET['expairydate']!=''){
 
-$sta=split('-',$startdate);
-$startdate1=$sta['2']."-".$sta['1']."-".$sta['0'];
-$exp=split('-',$expairydate);
-$expairydate1=$exp['2']."-".$exp['1']."-".$exp['0'];
-if(trim($textcatgory) !="")
-{
-	
-$querywhere .=" AND category_id='".trim($textcatgory)."'";
+			if(trim($textcatgory) !=""){
+				
+			$querywhere .=" AND category_id='".trim($textcatgory)."'";
 
-}
+			}
 
-
-if($exp['2'] < $sta['2'])
-{
-
-$errmsg =" From Date should be lesser than To Date."."<br>";
-
-} 
-else if(($exp['2'] == $sta['2']) && ($exp['1'] < $sta['1'])) 
-{
-
-$errmsg .=" From Date should be lesser than To Date."."<br>";
-
-} 
-else if((($exp['2'] == $sta['2']) && ($exp['1'] == $sta['1'])) && ($exp['0'] < $sta['0'])) 
-{
-
-$errmsg .="Please enter From Date lesser than To Date."."<br>";
-
-}
-if($startdate !="" && $expairydate !="")
-	{
-			if(preg_match("/^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}$/", $expairydate) === 0)
-						{
-						$errmsg .= 'Date should be in DD-MM-YYYY format<br>';
-						}
-						if(preg_match("/^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}$/", $startdate) === 0)
-						{
-						$errmsg .= 'Date should be in DD-MM-YYYY format<br>';
-						}
-						else
-						{
-							$startdate1=changeformate($startdate);
-							$expairydate1=changeformate($expairydate);
-							// if($textcatgory=='3'){
-							//$tender ="and end_date between '$startdate1' and '$expairydate1' ";
-							//}
-							//else {
-							$querywhere .="and end_date between '$startdate1' and '$expairydate1'  ";
-							//	}
-						}
-	}
+			if($startdate !="" && $expairydate !=""){
+				$startdate1 = date("Y-m-d", strtotime($startdate));	
+				$expairydate1 = date("Y-m-d", strtotime($expairydate));	
+				$querywhere .="and end_date between '$startdate1' and '$expairydate1'  ";
+									
+			}
 		
-		 if($textcatgory=='1'){
-		 	 $date=date('Y-m-d');
-	     $sql="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' or category_id='1'  $querywhere";
-		 }
-		  else if($textcatgory=='2'){
-		 	 $date=date('Y-m-d');
-	       $sql="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' or category_id='2'  $querywhere";
-		 }
-		  else if($textcatgory=='3'){
-		 	 $date=date('Y-m-d');
-	      $sql="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' or category_id='3' and date(end_date) < '$date' $querywhere";
-		 }
-
-
-			
-	}
-
-		else {
-			$date=date('Y-m-d');
-	  $sql="SELECT * FROM recruitment_publish where language_id=1 and approve_status=3 and date(end_date ) < $date";
-		  
-		  }
-	
+			 if($textcatgory=='1'){
+				 $date=date('Y-m-d');
+			 $sql.="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' and category_id='1'  and  end_date  > '$date' $querywhere";
+			 }else if($textcatgory=='2'){
+				 $date=date('Y-m-d');
+			   $sql.="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' and category_id='2' and  end_date  > '$date'  $querywhere";
+			 }else if($textcatgory=='3'){
+				 $date=date('Y-m-d');
+			  $sql.="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' and category_id='3' and  end_date  > '$date' $querywhere";
+			 }else{
+				  $date=date('Y-m-d');
+				$sql.="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3'  and   end_date  > '$date' $querywhere"; 
+			 }
+	}else{
+	   $date=date('Y-m-d');
+	  $sql.="SELECT * FROM recruitment_publish where language_id=1 and approve_status=3 and  end_date  > '$date' ";
+	}	
 	?>
 <div class="acchive-div">
 <label for="textcatgory"><strong>Category:</strong></label>
@@ -469,23 +423,14 @@ foreach($vacancytype as $key=>$value)
 			   <th>Publish Date</th>
 			   <th>Last Date</th>
 			   </tr>
-			    <?php if($mydb->checkTableRow("recruitment_publish")>0){
-					$i=1;
-					$date=date('Y-m-d');
-					$newsrows=mysqli_query($conn,$sql);
-					$whereClause="approve_status='3' && language_id='1'  && date(end_date ) >= '$date'  order by start_date desc" ;
-					$newsrows=$mydb->gettable_Rows_whereCluse("recruitment_publish",$whereClause); 
-					
-					  //$no_of_rows=mysqli_num_rows($newsrows);
-					 
-				}
+			    <?php 
 				?>
 				 <?php
-				 
-				 $pager = new PS_Pagination($link, $sql,"textcatgory=$textcatgory");
-			 $rs = $pager->paginate($conn,$sql);
+				//echo $sql; //die('hell');
+				 $pager = new PS_Pagination($conn, $sql,"textcatgory=$textcatgory");
+			     $rs = $pager->paginate($conn,$sql,"textcatgory=$textcatgory");
 				 if($rs>0)
-			{	
+			     {	
 				$counter=1;
 				while($value=mysqli_fetch_array($rs))
 				{

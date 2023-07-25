@@ -194,6 +194,7 @@ if(($inactiveid !=''))
                   <div class="clear"></div>
 				  
 <?php 
+
 	if($btnsubmit=="Search")
 	{
 		
@@ -210,7 +211,7 @@ if(($inactiveid !=''))
 				}
 				else
 				 {
-					$querywhere .=" and name LIKE '%$filter_search%'"; 
+					$querywhere .=" and m_title  LIKE '%$filter_search%'"; 
 				 }
 		}
 		if($txtstatus=='')
@@ -236,7 +237,7 @@ if(($inactiveid !=''))
 	 
 	  if($errmsg=='')	
 	  {
-  $query ="select * from employee_corner where 1 $querywhere ORDER BY page_postion ASC "; 
+   $query ="select * from employee_corner where 1 $querywhere ORDER BY page_postion ASC "; 
 	  }
 	 else
 	{
@@ -244,27 +245,37 @@ if(($inactiveid !=''))
 	}	
 }
 else { 
-if($role_map['draft']=='DR' || $role_map['mapprove']=='AP'  || $user_id=='101'){
-	if($_GET['txtstatus'] !='')
-	 {
-			if($_GET['txtstatus'] =='3')
-			{
-			$where= " approve_status =".$_GET['txtstatus'];
-			}
-			else { $where="  approve_status =". $_GET['txtstatus'];} 
-	 }
-	 else { $where= " and approve_status=1"; }
-$wherecluse="  language_id=$language $where";
-}
- if($role_map['pending']=='PND' || $role_map['publish']=='PB'){
-	if($_GET['txtstatus'] !='')
-	 {
-		$txtstatus=$_GET['txtstatus'];
-	 }	 
-	 else { $txtstatus=3; }
-$wherecluse=" language_id=$language and approve_status='$txtstatus'";
-}
-  $query ="select * from employee_corner where $wherecluse ORDER BY page_postion ASC ";
+	if($role_map['draft']=='DR' || $role_map['mapprove']=='AP'  || $user_id=='101'){
+		if($_GET['txtstatus'] !='')
+		 {
+				if($_GET['txtstatus'] =='3')
+				{
+				$where= " approve_status =".$_GET['txtstatus'];
+				}
+				else { $where="  approve_status =". $_GET['txtstatus'];} 
+		 }else { 
+		        $where= " and approve_status=1"; }
+		        $wherecluse="  language_id=$language $where";
+		}
+	    if($role_map['pending']=='PND' || $role_map['publish']=='PB'){
+			if($_GET['txtstatus'] !='')
+			 {
+				$txtstatus=$_GET['txtstatus'];
+			 }else { 
+				$txtstatus=3; 
+			 } 
+	       $wherecluse=" language_id=$language and approve_status='$txtstatus'";
+	    }
+		if($_GET['txtstatus'] !=''){
+				
+			$where=" and approve_status =". $_GET['txtstatus'];
+			 
+		  }else { 
+		        $where= " and approve_status=3";
+		 }
+		 $wherecluse=" and language_id=$language $where";
+		
+	   $query ="select * from employee_corner where 1  $wherecluse ORDER BY page_postion ASC ";
 }
 ?>      
           <?php if($_SESSION['content']!=""){?>

@@ -11,6 +11,176 @@ include('counter.php');
 
 ?>
 
+<?php 
+$textcatgory=$_GET['cat'];
+if(isset($cmdsubmit))
+{
+ $textcatgory=check_input($_POST['textcatgory']);
+/*$textcatgory=content_desc(textcatgory);
+$startdate=content_desc(startdate);
+$expairydate=content_desc(expairydate);*/
+
+// $sta=split('-',$startdate);
+// $startdate=$sta['2']."-".$sta['1']."-".$sta['0'];
+// $exp=split('-',$expairydate);
+// $expairydate1=$exp['2']."-".$exp['1']."-".$exp['0'];
+
+	if(!empty($_POST['startdate']) || !empty($_POST['expairydate'])) {
+		$originalstartDate = check_input($_POST['startdate']);;
+		$startdate = date("Y-m-d", strtotime($originalstartDate));
+		$originalexpairydate = check_input($_POST['expairydate']);
+		$expairydate = date("Y-m-d", strtotime($originalexpairydate));
+	}
+
+if(trim($textcatgory) !="")
+{
+	
+
+}
+
+if($exp['2'] < $sta['2'])
+{
+$errmsg =" From Date should be lesser than To Date."."<br>";
+} 
+else if(($exp['2'] == $sta['2']) && ($exp['1'] < $sta['1'])) 
+{
+$errmsg .=" From Date should be lesser than To Date."."<br>";
+} 
+
+else if((($exp['2'] == $sta['2']) && ($exp['1'] == $sta['1'])) && ($exp['0'] < $sta['0'])) 
+{
+$errmsg .="Please enter From Date lesser than To Date."."<br>";
+}
+;
+if($startdate !="" && $expairydate !="")
+{
+	$querywhere ="and end_date between '$startdate' and '$expairydate' ";							
+}
+
+
+		if($errmsg=="")
+		{
+
+		 if($textcatgory==5){
+		 	 
+		 	 $date=date('Y-m-d');
+	      	 $sql="SELECT * FROM tender_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+		 }
+		  else if($textcatgory==1){
+		 	 
+		 	 $date=date('Y-m-d');
+	         $sql="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+		 }
+		  else if($textcatgory == 2){
+		
+		 	 $date=date('Y-m-d');
+	         $sql="SELECT * FROM latest_information_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+			//  echo $sql;
+			// die();
+		 }
+
+		 else  if($textcatgory==3){
+		 	 
+		 	 $date=date('Y-m-d');
+	         $sql="SELECT * FROM importent_information_publish where language_id='1' and cat_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+		 }
+		 else if($textcatgory==4){
+		 	 
+		 	 $date=date('Y-m-d');
+	      	 $sql="SELECT * FROM importent_information_publish where language_id='1' and cat_id='2' and approve_status='3' and end_date < '$date' $querywhere";
+
+		 }
+		  else if($textcatgory==6){
+			 	 
+			 	 $date=date('Y-m-d');
+		      	 $sql="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+		 }
+		 else if($textcatgory==7){
+			 $date=date('Y-m-d');
+			 $sql="SELECT * FROM employee_corner_publish where language_id='1'  and approve_status='3' and end_date < '$date' $querywhere ";
+		  }
+
+		   else if($textcatgory==8){
+			 $date=date('Y-m-d');
+			 $sql="SELECT * FROM tbl_training_publish where language_id='1'  and approve_status='3' and end_date < '$date' $querywhere ";
+		  }
+
+		  else if($textcatgory==9){
+			 
+			 $date=date('Y-m-d');
+			 $sql="SELECT * FROM publication_publish where language_id='1'  and approve_status='3' and end_date < '$date' $querywhere ";
+		  }
+		  else
+		  {
+
+		  /*	$date=date('Y-m-d');
+
+		  		$sql_1="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and date(end_date ) < '$date'";
+
+		  	    $sql_2="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+
+		  	    $sql_3="SELECT * FROM latest_information_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+		  	    $sql_4="SELECT * FROM importent_information_publish where language_id='1' and cat_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+
+		  	    $sql_4="SELECT * FROM importent_information_publish where language_id='1' and cat_id='2' and approve_status='3' and end_date < '$date' $querywhere";
+
+		  	    $sql_6="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+
+		  	     $sql_7="SELECT * FROM employee_corner_publish where language_id='1'  and approve_status='3' and date(end_date ) < '$date' $querywhere ";
+
+		  	      $sql_8="SELECT * FROM tbl_training_publish where language_id='1'  and approve_status='3' and date(end_date ) < '$date' $querywhere ";
+
+		  	      $sql_9="SELECT * FROM publication_publish where language_id='1'  and approve_status='3' and date(end_date ) < '$date' $querywhere ";
+
+		  	$cmd_q1 =      mysql_query($sql_1);
+		  	$cmd_q2 =      mysql_query($sql_1);
+		  	$cmd_q3 =      mysql_query($sql_1);
+		  	$cmd_q4 =      mysql_query($sql_1);
+		  	$cmd_q5 =      mysql_query($sql_1);
+		  	$cmd_q6 =      mysql_query($sql_1);
+		  	$cmd_q7 =      mysql_query($sql_1);
+		  	$cmd_q8 =      mysql_query($sql_1);
+		  	$cmd_q9 =      mysql_query($sql_1);
+
+		  	$cmd_m1 = mysql_fetch_array($cmd_q1);
+		  	$cmd_m2 = mysql_fetch_array($cmd_q2);
+		  	$cmd_m3 = mysql_fetch_array($cmd_q3);
+		  	$cmd_m4 = mysql_fetch_array($cmd_q4);
+		  	$cmd_m5 = mysql_fetch_array($cmd_q5);
+		  	$cmd_m6 = mysql_fetch_array($cmd_q6);
+		  	$cmd_m7 = mysql_fetch_array($cmd_q7);
+		  	$cmd_m8 = mysql_fetch_array($cmd_q8);
+		  	$cmd_m9 = mysql_fetch_array($cmd_q9);
+
+		  	$all_data = array_merge($cmd_m1,$cmd_m2,$cmd_m3,$cmd_m4,$cmd_m5,$cmd_m6,$cmd_m7,$cmd_m8,$cmd_m9);*/
+
+
+		  	//print_r($all_data);
+		  	  for($q =1; $q < count($all_data); $q++){
+		  	  	print_r($all_data[$q]->doc_uplode);
+		  	  	echo '<br>';
+		  	  }
+
+	 		$date=date('Y-m-d');
+	      	$sql="SELECT * FROM tender_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
+			}
+			}
+			}
+			else {
+			$date=date('Y-m-d');
+	 		$sql="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and end_date < '$date'";
+		    }
+			
+	  		/* $sql=mysql_query($sql);
+		    $num_rows=mysql_num_rows($sql);*/
+			$pager = new PS_Pagination($conn, $sql,"");
+							$rs = $pager->paginate($conn, $sql,"");
+			// $pager = new PS_Pagination($conn, $sql, 10, 5, "");
+			//  $rs = $pager->paginate();
+			//  echo "hiii";
+			// die();
+		   ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -282,9 +452,7 @@ foreach($archive_cat as $key=>$value)
 {
 
 ?>
-<option value="<?php echo content_desc($key); ?>" <?php if($key==$textcatgory){ echo 'selected="selected"'; }elseif (isset($_GET['cat'])) {
-	echo 'selected="selected"'; 
-} else { }?>><?php echo $value; ?></option>
+<option value="<?php echo content_desc($key); ?>" <?php if($key==$textcatgory){ echo 'selected="selected"'; }else{ }?>><?php echo $value; ?></option>
 <?php }
  ?>
 </select>
@@ -311,173 +479,6 @@ foreach($archive_cat as $key=>$value)
 <div class="clear"></div>
 </div>
 
-<?php if(isset($cmdsubmit))
-{
-
-/*$textcatgory=content_desc(textcatgory);
-$startdate=content_desc(startdate);
-$expairydate=content_desc(expairydate);*/
-
-// $sta=split('-',$startdate);
-// $startdate=$sta['2']."-".$sta['1']."-".$sta['0'];
-// $exp=split('-',$expairydate);
-// $expairydate1=$exp['2']."-".$exp['1']."-".$exp['0'];
-
-	if(!empty($_POST['startdate']) || !empty($_POST['expairydate'])) {
-		$originalstartDate = check_input($_POST['startdate']);;
-		$startdate = date("Y-m-d", strtotime($originalstartDate));
-		$originalexpairydate = check_input($_POST['expairydate']);
-		$expairydate = date("Y-m-d", strtotime($originalexpairydate));
-	}
-
-if(trim($textcatgory) !="")
-{
-	
-
-}
-
-if($exp['2'] < $sta['2'])
-{
-$errmsg =" From Date should be lesser than To Date."."<br>";
-} 
-else if(($exp['2'] == $sta['2']) && ($exp['1'] < $sta['1'])) 
-{
-$errmsg .=" From Date should be lesser than To Date."."<br>";
-} 
-
-else if((($exp['2'] == $sta['2']) && ($exp['1'] == $sta['1'])) && ($exp['0'] < $sta['0'])) 
-{
-$errmsg .="Please enter From Date lesser than To Date."."<br>";
-}
-;
-if($startdate !="" && $expairydate !="")
-{
-	$querywhere ="and end_date between '$startdate' and '$expairydate' ";							
-}
-
-
-		if($errmsg=="")
-		{
-
-		 if($textcatgory==5){
-		 	 
-		 	 $date=date('Y-m-d');
-	      	 $sql="SELECT * FROM tender_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-		 }
-		  else if($textcatgory==1){
-		 	 
-		 	 $date=date('Y-m-d');
-	         $sql="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-		 }
-		  else if($textcatgory == 2){
-		
-		 	 $date=date('Y-m-d');
-	         $sql="SELECT * FROM latest_information_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-			//  echo $sql;
-			// die();
-		 }
-
-		 else  if($textcatgory==3){
-		 	 
-		 	 $date=date('Y-m-d');
-	         $sql="SELECT * FROM importent_information_publish where language_id='1' and cat_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-		 }
-		 else if($textcatgory==4){
-		 	 
-		 	 $date=date('Y-m-d');
-	      	 $sql="SELECT * FROM importent_information_publish where language_id='1' and cat_id='2' and approve_status='3' and end_date < '$date' $querywhere";
-
-		 }
-		  else if($textcatgory==6){
-			 	 
-			 	 $date=date('Y-m-d');
-		      	 $sql="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-		 }
-		 else if($textcatgory==7){
-			 $date=date('Y-m-d');
-			 $sql="SELECT * FROM employee_corner_publish where language_id='1'  and approve_status='3' and end_date < '$date' $querywhere ";
-		  }
-
-		   else if($textcatgory==8){
-			 $date=date('Y-m-d');
-			 $sql="SELECT * FROM tbl_training_publish where language_id='1'  and approve_status='3' and end_date < '$date' $querywhere ";
-		  }
-
-		  else if($textcatgory==9){
-			 
-			 $date=date('Y-m-d');
-			 $sql="SELECT * FROM publication_publish where language_id='1'  and approve_status='3' and end_date < '$date' $querywhere ";
-		  }
-		  else
-		  {
-
-		  /*	$date=date('Y-m-d');
-
-		  		$sql_1="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and date(end_date ) < '$date'";
-
-		  	    $sql_2="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-
-		  	    $sql_3="SELECT * FROM latest_information_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-		  	    $sql_4="SELECT * FROM importent_information_publish where language_id='1' and cat_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-
-		  	    $sql_4="SELECT * FROM importent_information_publish where language_id='1' and cat_id='2' and approve_status='3' and end_date < '$date' $querywhere";
-
-		  	    $sql_6="SELECT * FROM recruitment_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-
-		  	     $sql_7="SELECT * FROM employee_corner_publish where language_id='1'  and approve_status='3' and date(end_date ) < '$date' $querywhere ";
-
-		  	      $sql_8="SELECT * FROM tbl_training_publish where language_id='1'  and approve_status='3' and date(end_date ) < '$date' $querywhere ";
-
-		  	      $sql_9="SELECT * FROM publication_publish where language_id='1'  and approve_status='3' and date(end_date ) < '$date' $querywhere ";
-
-		  	$cmd_q1 =      mysql_query($sql_1);
-		  	$cmd_q2 =      mysql_query($sql_1);
-		  	$cmd_q3 =      mysql_query($sql_1);
-		  	$cmd_q4 =      mysql_query($sql_1);
-		  	$cmd_q5 =      mysql_query($sql_1);
-		  	$cmd_q6 =      mysql_query($sql_1);
-		  	$cmd_q7 =      mysql_query($sql_1);
-		  	$cmd_q8 =      mysql_query($sql_1);
-		  	$cmd_q9 =      mysql_query($sql_1);
-
-		  	$cmd_m1 = mysql_fetch_array($cmd_q1);
-		  	$cmd_m2 = mysql_fetch_array($cmd_q2);
-		  	$cmd_m3 = mysql_fetch_array($cmd_q3);
-		  	$cmd_m4 = mysql_fetch_array($cmd_q4);
-		  	$cmd_m5 = mysql_fetch_array($cmd_q5);
-		  	$cmd_m6 = mysql_fetch_array($cmd_q6);
-		  	$cmd_m7 = mysql_fetch_array($cmd_q7);
-		  	$cmd_m8 = mysql_fetch_array($cmd_q8);
-		  	$cmd_m9 = mysql_fetch_array($cmd_q9);
-
-		  	$all_data = array_merge($cmd_m1,$cmd_m2,$cmd_m3,$cmd_m4,$cmd_m5,$cmd_m6,$cmd_m7,$cmd_m8,$cmd_m9);*/
-
-
-		  	//print_r($all_data);
-		  	//   for($q =1; $q < count($all_data); $q++){
-		  	//   	print_r($all_data[$q]->doc_uplode);
-		  	//   	echo '<br>';
-		  	//   }
-
-	 		$date=date('Y-m-d');
-	      	$sql="SELECT * FROM tender_publish where language_id='1' and approve_status='3' and end_date < '$date' $querywhere";
-			}
-			}
-			}
-			else {
-			$date=date('Y-m-d');
-	 		$sql="SELECT * FROM whatsnew_publish where language_id='1' and approve_status='3' and end_date < '$date'";
-		    }
-			
-	  		/* $sql=mysql_query($sql);
-		    $num_rows=mysql_num_rows($sql);*/
-			$pager = new PS_Pagination($conn, $sql,"");
-							$rs = $pager->paginate($conn, $sql,"");
-			// $pager = new PS_Pagination($conn, $sql, 10, 5, "");
-			//  $rs = $pager->paginate();
-			//  echo "hiii";
-			// die();
-		   ?>
 		   	<table width="100%" class="table table-bordered">
                 <?php if($errmsg!="") { ?>
                 <tr>
@@ -585,7 +586,7 @@ if($startdate !="" && $expairydate !="")
 				?>
 		</table>
 <?php   echo $pager->renderFullNav();?>
-  </div>
+  </div></p>
  </div> 
     </div>
     </div>

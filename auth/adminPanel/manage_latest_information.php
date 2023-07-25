@@ -161,9 +161,9 @@ if(($inactiveid !=''))
 	}
 
    $sql="Update latest_information set approve_status='1' where m_id='$inactiveid'";
- $res=mysqli_query($sql);
+ $res=mysqli_query($conn,$sql);
   $sql="Update latest_information_publish set approve_status='1' where m_publish_id='$inactiveid'";
- $res=mysqli_query($sql);
+ $res=mysqli_query($conn,$sql);
 	if($res)
 	{	
 	header("location:delete.php?status=latest_inactiveid");

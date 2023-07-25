@@ -162,7 +162,7 @@ jQuery(document).ready(function () {
 <!-- Logo Part Start -->
 <div id="main-nav" class="navigation-bg">
   <nav>
-    <div class="container">
+    <div class="">
       <?php include('navigation.php');?>
     </div>
   </nav>

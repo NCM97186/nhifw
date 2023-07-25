@@ -305,7 +305,7 @@ $(function () {
             
 <div class="left-menu">
 <div class="left">
-<?php include("../left_menu.php");?>
+<?php //include("../left_menu.php");?>
 		
 </div>
 </div>

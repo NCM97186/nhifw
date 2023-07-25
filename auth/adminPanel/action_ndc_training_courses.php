@@ -6,8 +6,8 @@ include("../../includes/functions.inc.php");
 include("../../includes/def_constant.inc.php");
 include_once 'ckeditor/ckeditor.php';
 include_once 'ckfinder/ckfinder.php';
-$_GET['editid']=content_desc(base64_decode($_GET['editid']));
-
+//$_GET['editid']=content_desc(base64_decode($_GET['editid']));
+$_GET['editid'] = base64_decode($_GET['editid']);
  if(!is_numeric($_GET['editid']) && $_GET['editid'] !='')
 {
         /*session_unset($admin_auto_id_sess);
@@ -327,7 +327,8 @@ exit;
 }
 if(isset($_POST['cmdsubmit']) && $_GET['editid']!='')
 {
-        //echo "<pre>"; print_r($_POST); exit;
+
+//echo "<pre>"; print_r($_GET); exit;
 $cid=$_GET['editid'];
 $txtlanguage= content_desc(check_input($_POST['txtlanguage']));
 $title = content_desc(check_input($_POST['text_title']));
@@ -394,36 +395,36 @@ if($txtlanguage=='2')
 			 if($content_type=='2')
 			  {	
 				 if ($_FILES["txtuplodepdf"]["tmp_name"]!="")
-                                                                {
-                                                                        $tempfile=($_FILES["txtuplodepdf"]["tmp_name"]);
-                                                                        $imageinfo = ($_FILES["txtuplodepdf"]["type"]);
-                                                                        $head = fgets(fopen($tempfile, "r"),5);
-                                                                        $section = strtoupper(base64_encode(file_get_contents($tempfile)));
-                                                                        $nsection=substr($section,0,8);
+					{
+							$tempfile=($_FILES["txtuplodepdf"]["tmp_name"]);
+							$imageinfo = ($_FILES["txtuplodepdf"]["type"]);
+							$head = fgets(fopen($tempfile, "r"),5);
+							$section = strtoupper(base64_encode(file_get_contents($tempfile)));
+							$nsection=substr($section,0,8);
 
-                                                                              
-                                                                        if($imageinfo != "application/pdf" )
-                                                                        {
-                                                                             
-                                                                                $errmsg .= 'Sorry, we accept PDF files only';
-                                                                        }
+								  
+							if($imageinfo != "application/pdf" )
+							{
+								 
+									$errmsg .= 'Sorry, we accept PDF files only';
+							}
 
-                                                                      /*  else if($head != "%PDF") 
-                                                                        {
-                                                                                 
-                                                                                $errmsg .= 'Sorry,we accept PDF files only';
-                                                                        }
-
-
-                                                                        elseif($nsection!="JVBERI0X")
-                                                                        {
-                                                                                  
-                                                                                $errmsg .= 'Sorry,we accept PDF files only';
-                                                                        }*/
+						  /*  else if($head != "%PDF") 
+							{
+									 
+									$errmsg .= 'Sorry,we accept PDF files only';
+							}
 
 
-                                                                }
-                                                        }
+							elseif($nsection!="JVBERI0X")
+							{
+									  
+									$errmsg .= 'Sorry,we accept PDF files only';
+							}*/
+
+
+					}
+			}
 			 if($content_type=='3')
 			  {	
                 if(trim($exturl)=="")
@@ -570,35 +571,42 @@ $new = array("$txtlanguage","$sortcontentdesc","$title","$txtcontentdesc","$url"
 $useAVclass->UpdateQuery($tableName_send,$whereclause,$old,$new);
 //if($txtstatus=='3'){
 	
-                $tableName_send="ndc_training_courses_publish";
-	$whereclause="where publish_id='$cid'";
+    $tableName_send="ndc_training_courses_publish";
+	$whereclause="where publish_id=$cid";
+//echo "Select * from ndc_training_courses_publish $whereclause";	die();
 $sql=mysqli_query($conn,"Select * from ndc_training_courses_publish $whereclause");
 $row=mysqli_num_rows($sql);
 
 	
-	if($row >0)
+	if($row>0)
 	{
-	$whereclause="publish_id='$cid'";
-                $old = array("language_id","publish_id","m_description","m_title","m_content","page_url","ext_url","docs_file","start_date","end_date","approve_status","content_type","admin_id","create_date","update_date","category");
-                $new = array("$txtlanguage","$cid","$sortcontentdesc","$title","$txtcontentdesc","$url","$exturl","$txtuplodepdf","$startdate","$expairydate","$txtstatus","$content_type","$user_id","$create_date","$update_date","0");
-	
-                $useAVclass->UpdateQuery($tableName_send,$whereclause,$old,$new);
 		
-$user_id=$_SESSION['admin_auto_id_sess'];
-$page_id=$cid;
-$action="Update";
-$categoryid='1';
-$date=date("Y-m-d h:i:s");
-$ip=$_SERVER['REMOTE_ADDR'];
-
-$tableName="audit_trail";
-$tableFieldsName_send=array("user_login_id","page_id","page_name","page_action","page_category","page_action_date","ip_address","lang","page_title","approve_status");
-$tableFieldsValues_send=array("$user_id","$page_id","$title","$action","$model_id","$date","$ip","$txtlanguage","$title","$txtstatus");
-$value=$useAVclass->insertQuery($tableName,$tableFieldsName_send,$tableFieldsValues_send);
-	}
-	else
-	{
+	    $whereclause="publish_id='$cid'";
+		$old = array("language_id","publish_id","m_description","m_title","m_content","page_url","ext_url","docs_file","start_date","end_date","approve_status","content_type","admin_id","create_date","update_date","category");
+		$new = array("$txtlanguage","$cid","$sortcontentdesc","$title","$txtcontentdesc","$url","$exturl","$txtuplodepdf","$startdate","$expairydate","$txtstatus","$content_type","$user_id","$create_date","$update_date","0");
+         
+		$useAVclass->UpdateQuery($tableName_send,$whereclause,$old,$new);
+		 // echo"<pre>";
+		 // print_r($new);
+		 // print_r($old);
+         // echo"</pre>";die();			
+		$user_id=$_SESSION['admin_auto_id_sess'];
 		$page_id=$cid;
+		$action="Update";
+		$categoryid='1';
+		$date=date("Y-m-d h:i:s");
+		$ip=$_SERVER['REMOTE_ADDR'];
+
+		$tableName="audit_trail";
+		$tableFieldsName_send=array("user_login_id","page_id","page_name","page_action","page_category","page_action_date","ip_address","lang","page_title","approve_status");
+		$tableFieldsValues_send=array("$user_id","$page_id","$title","$action","$model_id","$date","$ip","$txtlanguage","$title","$txtstatus");
+		$value=$useAVclass->insertQuery($tableName,$tableFieldsName_send,$tableFieldsValues_send);
+	}else{
+	     // echo"<pre>";
+		 // print_r($new);
+		 // print_r($old);
+         // echo"</pre>";die();	
+	$page_id=$cid;
 	$tableFieldsName_send=array("language_id","publish_id","m_description","m_title","m_content","page_url","ext_url","start_date","end_date","approve_status","content_type","admin_id","create_date","update_date","category");
 	$tableFieldsValues_send=array("$txtlanguage","$page_id","$sortcontentdesc","$title","$txtcontentdesc","$url","$exturl","$startdate","$expairydate","$txtstatus","$content_type","$user_id","$create_date","$update_date","0");
 	$useAVclass->insertQuery($tableName_send,$tableFieldsName_send,$tableFieldsValues_send);
@@ -614,10 +622,10 @@ $value=$useAVclass->insertQuery($tableName,$tableFieldsName_send,$tableFieldsVal
 		$ip=$_SERVER['REMOTE_ADDR'];
 		$tableName="audit_trail";
 		$tableFieldsName_old=array("user_login_id","page_id","page_name","page_action","page_category","page_action_date","ip_address","lang","page_title","approve_status");
-$tableFieldsValues_send=array("$user_id","$page_id","$title","$action","$model_id","$date","$ip","$txtlanguage","$title","$txtstatus");
-	$value=$useAVclass->insertQuery($tableName,$tableFieldsName_old,$tableFieldsValues_send);
-	$msg=CONTENTADD;
-$_SESSION['content']=$msg;
+		$tableFieldsValues_send=array("$user_id","$page_id","$title","$action","$model_id","$date","$ip","$txtlanguage","$title","$txtstatus");
+			$value=$useAVclass->insertQuery($tableName,$tableFieldsName_old,$tableFieldsValues_send);
+			$msg=CONTENTADD;
+		$_SESSION['content']=$msg;
 header("location:manage_ndc_training_courses.php");
 exit;	
 }

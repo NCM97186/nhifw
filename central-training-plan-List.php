@@ -358,7 +358,7 @@ if($page!='') {
 		</div>
 		</div>
 		
-		<?php include("left_menu.php");	?>
+		<?php //include("left_menu.php");	?>
 		
 		</div>
 <div class="col-md-9 content-area">

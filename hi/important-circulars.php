@@ -65,7 +65,7 @@ foreach($contentrows as $key=>$value){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>National Institute of Health & Family Welfare</title>
+    <title>राष्ट्रीय स्वास्थ्य एवं परिवार कल्याण संस्थान</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $HomeURL;?>/css/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS  -->
@@ -244,7 +244,7 @@ foreach($contentrows as $key=>$value){
     
     <!-- Logo Part Start -->
 	<div class="container-fluid">
-		<?php include('header.php');?>
+		<?php //include('header.php');?>
 	</div>
     <!-- Logo Part Start -->
     
@@ -261,9 +261,9 @@ foreach($contentrows as $key=>$value){
 <div class="row">
             <div class="col-md-12">
             <ol class = "breadcrumb breadcrum-margin-top">
-   <li><a href = "<?php echo $HomeURL;?>/content" title="Home">Home</a></li>
-   <li class = ""><a href="view-all.php?menu=Important Information">Important Information</a> </li>
-   <li class = "active">Importent Circulars</li>
+   <li><a href = "<?php echo $HomeURL;?>/hi/content" title="मुख्य पृष्ठ">मुख्य पृष्ठ</a></li>
+   <li class = ""><a href="view-all.php?menu=Important Information">महत्वपूर्ण सूचना</a> </li>
+   <li class = "active">महत्वपूर्ण परिपत्र</li>
     <?php if($_GET['page']!='') { ?> 
 	   <li class = "active"><?php echo $page_name;?></li>
 
@@ -301,7 +301,7 @@ foreach($contentrows as $key=>$value){
                 <h2 class="heading"> <?php if($_GET['page']!='') { ?> 
 					<?php echo $page_name;?>
 				 <?php }  else { ?>
-				Important Circulars
+				महत्वपूर्ण परिपत्र
 				<?php } ?></h2>
           <?php if($_GET['page']=='') { ?>           
            
@@ -315,7 +315,7 @@ foreach($contentrows as $key=>$value){
 			    <?php if($mydb->checkTableRow("importent_information_publish")>0){
 					$i=1;
 					$date=date('Y-m-d');
-					$whereClause="approve_status='3' && language_id='1' && cat_id='1' && date(end_date ) >= '$date'  order by start_date desc" ;
+					$whereClause="approve_status='3' && language_id='2' && cat_id='1' && date(end_date ) >= '$date'  order by start_date desc" ;
 					$newsrows=$mydb->gettable_Rows_whereCluse("importent_information_publish",$whereClause); 
 					if(is_array($newsrows)){
 					  $no_of_rows= count($newsrows);

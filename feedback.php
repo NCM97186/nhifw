@@ -7,8 +7,6 @@ session_start();
 require_once "includes/useAVclass.php";
 require_once "includes/connection.php";
 
-
-
 require_once "includes/config.inc.php";
 require_once "includes/functions-front.inc.php";
 require_once "includes/function-front.php";
@@ -564,29 +562,29 @@ $url = strtolower(content_desc(htmlspecialchars($_SERVER['REQUEST_URI'])));
   
 <ul class="menu-class treeview" data-my='ok3'>
         
-    <li ook><a href="http://localhost/nihfw/cms/feedback.php" title="Feedback" class="selected">Feedback</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/feedback.php" title="Feedback" class="selected">Feedback</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/email--fax--telephones.php" title="Email, Fax, Telephones" >Email, Fax, Telephones</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/email--fax--telephones.php" title="Email, Fax, Telephones" >Email, Fax, Telephones</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/directors-office.php" title="Directors Office" class="">Directors Office</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/directors-office.php" title="Directors Office" class="">Directors Office</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/office-of-dean.php" title="Office of Dean" class="">Office of Dean</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/office-of-dean.php" title="Office of Dean" class="">Office of Dean</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/vigilance-officer.php" title="Vigilance Officer" class="">Vigilance Officer</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/vigilance-officer.php" title="Vigilance Officer" class="">Vigilance Officer</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/public-information-officer.php" title="Public Information Officer" class="">Public Information Officer</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/public-information-officer.php" title="Public Information Officer" class="">Public Information Officer</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/location-map.php" title="Location Map" class="">Location Map</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/location-map.php" title="Location Map" class="">Location Map</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/how-to-reach.php" title="How to Reach" class="">How to Reach</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/how-to-reach.php" title="How to Reach" class="">How to Reach</a></li>
     
-    <li ook><a href="http://localhost/nihfw/cms/enquiry.php" title="Enquiry" class="">Enquiry</a></li>
+    <li ook><a href="http://117.239.177.100/nihfw/cms/enquiry.php" title="Enquiry" class="">Enquiry</a></li>
       </ul>
   </div>
 </div>
 </div>
 
-<?php include("left_menu.php");?>
+<?php //include("left_menu.php");?>
  
           </div>
           

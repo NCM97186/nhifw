@@ -250,7 +250,9 @@ include('../counter.php');
  
 <div class="col-md-9 content-area">
                 <h2 class="heading">What's New</h2>
-                
+             
+				<p style="text-align:right; font-size:14px; color:black; font-weight:bold;">
+    <a href="archive.php?cat=1" > Archive</a></p>   
  <table width="100%"  class="table table-bordered">
 <caption> What's New</caption>
 		<tbody>

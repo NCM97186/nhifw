@@ -270,7 +270,7 @@ include('../counter.php');
 </div>
 </div>
 
-            <?php include("left_menu.php");?>
+            <?php //include("left_menu.php");?>
     </div>
     <?php
     $date=date('Y-m-d');

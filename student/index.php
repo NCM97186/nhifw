@@ -318,7 +318,7 @@ $(function () {
 </div>
 </div>
 <br/>
-	<?php include("../left_menu.php");?>
+	<?php //include("../left_menu.php");?>
 
  
           </div>

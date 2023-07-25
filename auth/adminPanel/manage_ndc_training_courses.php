@@ -393,6 +393,7 @@ $_SESSION['content']=""; ?>.</p>
 							{
 							$class="odd";
 							}
+						
 							?>
 							<li id="arrayorder_<?php echo $id ?>" class="<?php echo $class;?>">
 							
